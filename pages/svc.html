@@ -1,0 +1,672 @@
+
+<!-- saved from url=(0055)https://www.zhangxueyao.com/data/SVC/tutorial.html#Demo -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="./Singing Voice Conversion_files/css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        body,
+        td,
+        th,
+        tr,
+        p,
+        a {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 18px
+        }
+
+        /* th,
+        td.demo {
+            border-style: solid;
+            border-color: #96D4D4;
+        } */
+
+        a.cite {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 16px;
+            color: rgb(100, 100, 100);
+            text-decoration: none;
+        }
+
+        strong {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 18px;
+            /* color: rgb(180, 16, 44); */
+        }
+
+        annot {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 18px;
+            color: rgb(100, 100, 100);
+        }
+
+        papertitle {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 32px;
+            color: rgb(180, 16, 44);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        author {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 20px;
+            font-style: italic;
+            /* color : rgb(180, 16, 44) */
+            color: rgb(0, 0, 0);
+        }
+
+        heading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 25px;
+            color: rgb(180, 16, 44);
+            /* color: rgb(0, 0, 0); */
+        }
+
+        subheading {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 22px;
+            /* font-style:italic; */
+            color: rgb(180, 16, 44)
+                /* color: rgb(0, 0, 0); */
+        }
+
+        li {
+            line-height: 25px;
+        }
+
+        li.contents {
+            line-height: 30px;
+        }
+
+        .footer {
+            font-family: 'Lato', Verdana, Helvetica, sans-serif;
+            font-size: 14px;
+            opacity: 0.75;
+            color: #777;
+        }
+    </style>
+    <!-- <script
+        src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script> -->
+    <script async="" src="./Singing Voice Conversion_files/busuanzi.pure.mini.js"></script>
+
+    <link rel="icon" type="image/png" href="https://www.zhangxueyao.com/images/music.ico">
+    <title>Singing Voice Conversion</title>
+<style type="text/css">@font-face { font-family: Roboto; src: url('chrome-extension://gdojjgflncpbcfmenbkndfhoamlhajmf/fonts/Roboto-Regular.ttf'); }</style><link href="./Singing Voice Conversion_files/css(1)" type="text/css" rel="stylesheet"></head>
+
+<body class="vsc-initialized">
+    <table width="1200" border="0" align="center" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+            <td>
+                <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+                    <tbody><tr>
+                        <td>
+                            <papertitle>Singing Voice Conversion Project</papertitle>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>
+                                <author>Haoyan Luo</author>
+                            </b>
+                            <p>
+                                <!-- CSC3160/MDS6002, Spring 2023 -->
+                                SDS, The Chinese University of Hong Kong, Shenzhen
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <heading>Contents</heading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <li>Datasets</li>
+                            <li style="text-indent:20px; list-style-type: circle">ProSinger</li>
+                            <li style="text-indent:20px; list-style-type: circle">Opencpop</li>
+                            <li style="text-indent:20px; list-style-type: circle">M4Singer</li>
+                            <!-- <br> -->
+                            <!-- <li class="contents">Application and User Scenarios</li>
+                            <li style="text-indent:20px; list-style-type: circle">Imitation and Entertainment</li>
+                            <li style="text-indent:20px; list-style-type: circle">Singing Voice Beautification</li>
+                            <li style="text-indent:20px; list-style-type: circle">Education</li>
+                            <li style="text-indent:20px; list-style-type: circle">Creative Art</li> -->
+                            <!-- <br> -->
+                            <!-- <li class="contents">Recommended Datasets</li> -->
+                            <!-- <br> -->
+                            <!-- <li class="contents">Recommended Papers</li>
+                            <li style="text-indent:20px; list-style-type: circle">Paradigm of the conversion framework
+                                (Basics)</li>
+                            <li style="text-indent:20px; list-style-type: circle">To model singer independent features
+                            </li>
+                            <li style="text-indent:20px; list-style-type: circle">To model singer dependent features
+                            </li>
+                            <li style="text-indent:20px; list-style-type: circle">To introduce singing voice domain
+                                knowledge</li> -->
+                            <li class="contents">Baseline: WORLD-based SVC</li>
+                            <li style="text-indent:20px; list-style-type: circle">What is WORLD?</li>
+                            <li style="text-indent:20px; list-style-type: circle">Overview</li>
+                            <li style="text-indent:20px; list-style-type: circle">Implementation Details</li>
+                            <!-- <li style="text-indent:20px; list-style-type: circle">Demo</li> -->
+                            <li class="contents">Demo</li>
+                            <li style="text-indent:20px; list-style-type: circle">Target Audio (ProSinger)</li>
+                            <li style="text-indent:20px; list-style-type: circle">Conversion Demo</li>
+                            <!-- <li style="text-indent:20px; list-style-type: circle">Implementation Details</li>
+                            <li style="text-indent:20px; list-style-type: circle">Demo</li> -->
+
+                            <!-- <li class="contents">CSC3160/MDS6002 Project Description</li>
+                            <li style="text-indent:20px; list-style-type: circle">Requirements</li>
+                            <li style="text-indent:20px; list-style-type: circle">Potential Ideas</li> -->
+                            <!-- <li class="contents">Citation</li> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <heading>Datasets</heading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                </p><li><b>ProSinger</b> TBD. <annot>[1]</annot>
+                                </li>
+                                <!-- <br> -->
+                                <li><b>Opencpop</b> (Mandarian): 5.25 hours, 1 singers, 100 unique songs. <annot>[2]
+                                    </annot>
+                                </li>
+                                <!-- <br> -->
+                                <li><b>M4Singer</b> (Mandarian): 30.59 hours, 19 singers, 419 unique songs. <annot>[3]
+                                    </annot>
+                                </li>
+                                <!-- <br> -->
+                            <p></p>
+                            <p>
+                                <a class="cite">
+                                    [1] TBD. <br>
+                                    [2] Yu Wang, et al. Opencpop: A High-Quality Open Source Chinese Popular Song Corpus
+                                    for Singing Voice Synthesis. InterSpeech 2022. <br>
+                                    [3] Lichao Zhang, et al. M4Singer: a Multi-Style, Multi-Singer and Musical Score
+                                    Provided Mandarin Singing Corpus. NeurIPS 2022.
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <heading>Demo</heading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>Selected Target Audio (ProSinger)</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                <b>李健</b>:
+                                <br><br>
+                                <audio controls="">
+                                    <source src="./data/LiJiawei/LiJiawei-source.wav" type="audio/mpeg">
+                                </audio>
+                            </p>
+                            <p>
+                                <b>石倚洁</b>:
+                                <br><br>
+                                <audio controls="">
+                                    <source src="./data/LiJiawei/LiJiawei-target.wav" type="audio/mpeg">
+                                </audio>
+                            </p>
+                            <p>
+                                <b>Adele</b>:
+                                <br><br>
+                                <audio controls="">
+                                    <source src="./data/LiJiawei/LiJiawei-target.wav" type="audio/mpeg">
+                                </audio>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    
+                    <!-- <tr>
+                        <td>
+                            <a id="Baseline">
+                                <heading>Baseline: WORLD-based SVC</heading>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            All the source code of this baseline can be seen <a href="https://github.com/SLPcourse/Singing-Voice-Conversion">here</a>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>What is WORLD?</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                WORLD <a class="cite">[1]</a> is a classical vocoder in Digital Signal Processing (DSP).
+                                It supposes there are three acoustic components of an audio: Fundamental frequency (F0),
+                                Spectral envelope (SP), and Aperiodic
+                                parameter (AP). It can be considered not only an extractor, which can extract F0, SP,
+                                and AP efficiently, but also a synthesizer, which can synthesis an audio by
+                                incorporating
+                                the three.
+                            </p>
+                            <p>
+                                Compared to the recent neural-based vocoders (such as WaveNet, WaveRNN, Hifi-GAN,
+                                Diffwave, etc.),
+                                WORLD is more like a white box and is more controllable and manipulable, while its
+                                synthesis
+                                quality is worse. We can easily adjust the input parameters to change the synthesized
+                                audios. For example, given such a male singing voice:
+                            </p>
+                            <p>
+                                <audio controls="" src="./data/WORLD/LiJian/source.wav">
+                                </audio>
+                            </p>
+                            <p>
+                                We can keep the F0 unchanged, and convert it to a robot-like voice:
+                            </p>
+                            <p>
+                                <audio controls="" src="./data/WORLD/LiJian/pitch_all_100.wav">
+                                </audio>
+                            </p>
+                            <p>
+                                Or, we can also increase the F0 two times, divide the SP by 1.2, and
+                                convert it to a female-like voice:
+                            </p>
+                            <p>
+                                <audio controls="" src="./data/WORLD/LiJian/pitch_times_2_sp_div_1.2.wav">
+                                </audio>
+                            </p>
+                            <p>
+                                The official code of WORLD has been released <a href="https://github.com/mmorise/World">here</a>. You can play it, and manipulate
+                                the voice as you like!
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="cite">
+                                [1] Masanori Morise, et al. WORLD: A Vocoder-Based High-Quality Speech Synthesis
+                                System for Real-Time Applications. IEICE Trans. Inf. Syst. 2016.
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>Overview</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <img src="./Singing Voice Conversion_files/framework.png" width="80%">
+                            <p>
+                                <a class="cite">Paradigm of the conversion framework</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                The conversion framework of the figure above is proposed by <a class="cite">[1]</a>.
+                                There are two main
+                                modules of
+                                it, <i>Content Extractor</i> and <i>Singer-specific Synthesizer</i>. Given a source
+                                audio,
+                                firstly the <i>Content Extractor</i> is aim to extract content features (i.e.,
+                                <b>singer independent
+                                    features</b>) from the audio. Then, the <i>Singer-specific Synthesizer</i> is
+                                designed to
+                                inject the <b>singer dependent features</b> for the synthesis, so that the target
+                                audio can be able to capture the singer's characteristics.
+                            </p>
+                            <p>
+                                The authors of <a class="cite">[1]</a> assume that among the three components of
+                                WORLD (i.e., F0, AP, and SP), only SP is singer dependent and should be modeled by the
+                                <i>Singer-specific Synthesizer</i>, while the other two can be
+                                considered pure content features. Based on that, we can utilize the following two stages
+                                to conduct <b>any-to-one</b> conversion:
+                                </p><li style="text-indent:20px;">
+                                    <b>Acoustics Mapping Training</b> (Training Stage): This stage is to train the
+                                    mapping from the
+                                    textual
+                                    content features (eg: PPG) to the target singer's acoustic features (eg: SP or
+                                    MCEP). The training model can be a neural network like Bi-LSTM <a class="cite">[1]</a>.
+                                </li>
+                                <li style="text-indent:20px;">
+                                    <b>Inference and Conversion</b> (Conversion Stage): Given any source singer's audio,
+                                    firstly, extract its content features including F0, AP, and textual content
+                                    features.
+                                    Then, use the model of training stage to infer the converted acoustic features (SP
+                                    or MCEP).
+                                    Finally, given F0, AP, and the converted SP, we
+                                    utilize WORLD as vocoder to synthesis the converted audio.
+                                </li>
+                            <p></p>
+                            <p>
+                                <a class="cite">
+                                    [1] Xin Chen, et al. Singing Voice Conversion with Non-parallel Data. IEEE
+                                    MIPR 2019.
+                                </a>
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>Implementation Details</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                The experiment setting is many-to-one conversion. Specifically, we consider <a href="https://wenet.org.cn/opencpop/">Opencpop</a>
+                                (which is a single singer dataset) as target singer and use <a href="https://github.com/M4Singer/M4Singer">M4Singer</a> (which is a 19-singer
+                                dataset)
+                                as source singers.
+                            </p>
+                            <p>
+                                We adopt a <a href="https://github.com/JeremyCCHsu/Python-Wrapper-for-World-Vocoder">python
+                                    wrapper of WORLD</a> to extract F0, AP, and SP, and to synthesis audios. We use <a href="https://github.com/sp-nitech/diffsptk">diffsptk</a> to transform between SP
+                                and
+                                MCEP. We utilize the last layer encoder's output of <a href="https://github.com/openai/whisper">Whisper</a> as the content features
+                                (which is 1024d). During training stage, we use a 6-layer Transformer to train the
+                                mapping
+                                from
+                                whisper
+                                features to 40d MCEP features.
+                            </p>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <td>
+                            <b>Target Singer Samples</b> (Opencpop):
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+                                <tbody><tr>
+                                    <td>
+                                        <audio controls="" src="./data/Opencpop/2001000021.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="./data/Opencpop/2032001221.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="./data/Opencpop/2080002938.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>Conversion Samples</b> (Convert different singers of M4Singer to Opencpop / ProSinger):
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table width="100%" border="1" cellspacing="0" cellpadding="12" style="border-color: rgb(250, 250, 250);">
+                                <colgroup>
+                                    <col span="1" style="width: 10%;">
+                                    <col span="1" style="width: 30%;">
+                                    <col span="1" style="width: 30%;">
+                                    <col span="1" style="width: 30%;">
+                                </colgroup>
+                                <tbody><tr>
+                                    <td align="center">
+                                        <b>Source</b>
+                                    </td>
+                                    <td align="center">
+                                        <b>Ground Truth</b>
+                                    </td>
+                                    <td align="center">
+                                        <b>WORLD</b>
+                                    </td>
+                                    <td align="center">
+                                        <b>Converted Result</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Soprano-2
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000.wav" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000_world.wav" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000_pred.wav" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Soprano-3
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Alto-4
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Alto-5
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Tenor-6
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Tenor-7
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Bass-2
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        Bass-3
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000_world.wav">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000_pred.wav">
+                                        </audio>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>
+                            <heading>CSC3160/MDS6002 Project Description</heading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>Requirements</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            TBD (eg: the target singer should be <b>Opencpop singer</b>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <subheading>Potential Ideas</subheading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <li>To inject <b>singing voice domain knowledge</b> (eg: pitch,
+                                duration,
+                                score,
+                                timbre
+                                features) in to the model.</li>
+                            <li>To explore the impact of different <b>vocoders</b>.</li>
+                            <li>To design better <b>evaluation metrics</b>. For example, more robust objective
+                                evaluation, or
+                                more efficient and friendly subjective evaluation.</li>
+                            <li>To improve the <b>explainability</b> of SVC. For example, visualize the different module
+                                of
+                                the deep learning framework.
+                        </td>
+                    </tr> -->
+                    <!-- <tr>
+                        <td>
+                            <heading>Citation</heading>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cited as
+                            <p>
+                            <table table="" width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+                                <tbody><tr>
+                                    <td cellpadding="12" style="border-left: 5px solid #cdd0d4; background-color: rgb(250, 250, 250);">
+                                        <i>Xueyao Zhang. Singing Voice Conversion Tutorial. RMSnow's Blog. Jan 2023.
+                                            https://www.zhangxueyao.com/data/SVC/tutorial.html.</i>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                            </p>
+                            <p>
+                                Or
+                            </p>
+                            <table table="" width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
+                                <tbody><tr>
+                                    <td cellpadding="12" style="border-left: 5px solid #cdd0d4; background-color: rgb(250, 250, 250);">
+                                        <i>
+                                            @article{zhang2023svc,<br> 
+                                            title = "Singing Voice Conversion Tutorial",<br> 
+                                            author = "Xueyao Zhang",<br> 
+                                            journal = "RMSnow's Blog",<br> 
+                                            year = "2023",<br> 
+                                            month = "Jan",<br> 
+                                            url = "https://www.zhangxueyao.com/data/SVC/tutorial.html"<br>
+                                            }
+                                        </i>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+
+                <table width="100%" align="center" border="0" cellpadding="12">
+                    <tbody><tr>
+                        <td width="100%" valign="center">
+                            <p class="footer">
+                                Design: <a href="https://www.zhangxueyao.com/" target="_blank" style="color: #777; font-size: 14px;">Xueyao Zhang</a>
+                                <br>Last updated:
+                                <script>
+                                    t = new Date(document.lastModified).toLocaleDateString()
+                                    document.write(t);
+                                </script>2023/4/22
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span id="busuanzi_container_page_pv" style="display: inline;">#Views: <span id="busuanzi_value_page_pv">467</span></span> (2022/7/6~)
+                            </p>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table> -->
+<canvas id="AnnotateScreenShotCaptureCanvas" class="extension_reset_css " style="display: none; touch-action: pan-x pan-y;"></canvas><canvas id="AnnotateScreenShotCopyCanvas" class="extension_reset_css " style="display: none; touch-action: pan-x pan-y;"></canvas><canvas id="AnnotateAnnotationCaptureCanvas" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y; pointer-events: none;"></canvas><canvas id="AnnotateNotesAnnotationCaptureCanvas" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y; pointer-events: none;"></canvas><canvas id="AnnotateFeedbackAnnotationCaptureCanvas" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y; pointer-events: none;"></canvas><canvas id="AnnotateAnnotationSelectionCanvas" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y; pointer-events: none; cursor: auto;"></canvas><div id="AnnotateScreenCaptureDiv" class="extension_reset_css " data-annotateextensionversionno="8.19" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCapturelefthandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCapturetophandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCapturerighthandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCapturebottomhandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCaptureTopLefthandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCaptureBottomLefthandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCaptureBottomRighthandle" class="extension_reset_css annotate-highlight-plugin-capture-tab-handle" style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateScreenCaptureBtnCancel" title="Cancel" class="extension_reset_css extension_icon extension_icon-close" style="display: none; color: rgb(0, 0, 0);"></div><div id="AnnotateScreenCaptureBtnOk" title="Capture on current page" class="extension_reset_css extension_icon extension_icon-capture_tab" style="display: none; color: rgb(0, 0, 0); touch-action: pan-x pan-y;"></div><div id="AnnotateScreenCaptureBtnOkNewPage" title="Capture on new page" class="extension_reset_css extension_icon extension_icon-capture_new_page" style="display: none; color: rgb(0, 0, 0); touch-action: pan-x pan-y;"></div><div id="AnnotateScreenCaptureBtnCopy" title="Copy to clipboard" class="extension_reset_css extension_icon extension_icon-copy_clipboard" style="display: none; color: rgb(0, 0, 0); touch-action: pan-x pan-y;"></div><div id="AnnotateScreenShotCaptureMsg" class="extension_reset_css " style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateErrorMsgOverlay" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y;"></div><div id="AnnotateLaserElemeent" class=" extension_reset_css " style="display: none; width: 32px; height: 32px; top: 0px; left: 0px; border-radius: 16px; touch-action: pan-x pan-y;"></div><div class="extension_reset_css annotate-no-print " id="AnnotateMsgDialog" style="display: none; touch-action: pan-x pan-y;"><div id="AnnotateMsgDialogBtnClose" class="extension_reset_css extension_icon extension_icon-close_button_msg_dialog" style="color: rgb(33, 150, 243);"></div><div id="AnnotateMsgDialogHeader" class="extension_reset_css"></div><div class="extension_reset_css" id="AnnotateMsgDialogMessage"></div><div id="AnnotateImportOptionContainer" class="extension_reset_css"><div style="margin-bottom: 10px;"><div id="AnnotateImportFileNameLabel" class="extension_reset_css">Notebook name</div><div class="extension_reset_css" style="display: inline;"><input type="text" id="AnnotateFileName"></div><br><div class="extension_reset_css" id="AnnotateFileNameErr"></div></div><div class="extension_reset_css" style="margin-bottom: 20px;"><input type="radio" id="AnnotateImportOption1" name="importOption" class="ImportOption" value="all"><label for="AnnotateImportOption1" class="ImportOptionLabel">Entire Document</label></div><div><input type="radio" id="AnnotateImportOption2" name="importOption" class="ImportOption" value="selected"><label for="AnnotateImportOption2" class="extension_reset_css ImportOptionLabel" style="vertical-align: middle;">Selected Pages</label><div class="extension_reset_css" style="display: inline;"><input type="text" id="AnnotateImportRange" disabled="" placeholder="e.g. 1-5, 8, 11-13"></div><br><div class="extension_reset_css" id="AnnotateImportRangeErr"></div></div></div><div id="AnnotateSaveOptionContainer" class="extension_reset_css"><div class="extension_reset_css"><div class="extension_reset_css" style="margin-bottom: 8px;"><div id="AnnotateSaveAnnotationNameLabel" class="extension_reset_css TextInputElementLabel">Name</div><div class="extension_reset_css" style="display: inline;"><input type="text" id="AnnotateAnnotationName" class="extension_reset_css TextInputElement" spellcheck="false"></div><br><div class="extension_reset_css" id="AnnotateAnnotationNameErr"></div></div><div class="extension_reset_css" style="margin-bottom: 5px;"><div id="AnnotateSaveAnnotationDescriptionLabel" class="extension_reset_css TextInputElementLabel">Description</div><div class="extension_reset_css" style="display: inline;"><input type="text" id="AnnotateAnnotationDescription" class="extension_reset_css TextInputElement" spellcheck="false"></div></div></div><div class="extension_reset_css"><div class="extension_reset_css" style="margin-bottom: 20px;"><input type="radio" id="AnnotateSaveOption1" name="saveOption" class="extension_reset_css SaveOption" value="update"><label for="AnnotateSaveOption1" class="extension_reset_css saveOptionLabel">Update existing</label></div><div class="extension_reset_css" style="margin-bottom: 5px;"><input type="radio" id="AnnotateSaveOption2" name="saveOption" class="extension_reset_css SaveOption" value="create"><label for="AnnotateSaveOption2" class="extension_reset_css saveOptionLabel">Save new</label></div></div></div><div class="extension_reset_css"><div class="extension_reset_css" style="margin-bottom: 20px; padding-left: 10px;"><input type="radio" id="AnnotateApplyAnnotationOption1" name="applyAnnotationOption" class="extension_reset_css SaveOption" value="merge"><label for="AnnotateApplyAnnotationOption1" class="extension_reset_css saveOptionLabel">Merge with previous</label></div><div class="extension_reset_css" style="margin-bottom: 5px; padding-left: 10px;"><input type="radio" id="AnnotateApplyAnnotationOption2" name="applyAnnotationOption" class="extension_reset_css SaveOption" value="overwrite"><label for="AnnotateApplyAnnotationOption2" class="extension_reset_css saveOptionLabel">Overwrite previous</label></div></div><div class="extension_reset_css" style="position: relative; width: 105%; height: 5px; z-index: 1; box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 5px 0px;"></div><div id="AnnotateWebAnnotationItemsContainer" class="extension_reset_css"></div><div class="extension_reset_css" id="AnnotateRecordingOptionContainer"><div class="extension_reset_css" style="margin-bottom: 20px;"><input type="radio" id="AnnotateRecordingOption1" name="recordingOption" class="extension_reset_css RecordingOption" value="a"><label for="AnnotateRecordingOption1" class="extension_reset_css recordingOptionLabel">Voice note</label></div><div class="extension_reset_css" style="margin-bottom: 20px;"><input type="radio" id="AnnotateRecordingOption2" name="recordingOption" class="extension_reset_css RecordingOption" value="av"><label for="AnnotateRecordingOption2" class="extension_reset_css recordingOptionLabel">Camera recording</label></div><div class="extension_reset_css" style="margin-bottom: 5px;"><input type="radio" id="AnnotateRecordingOption3" name="recordingOption" class="extension_reset_css RecordingOption" value="as"><label for="AnnotateRecordingOption3" class="extension_reset_css recordingOptionLabel">Screen recording</label></div></div><div id="AnnotateMsgDialogInputContainer" class="extension_reset_css" style="margin-bottom: 8px;"><div id="AnnotateMsgDialogInputLabel" class="extension_reset_css TextInputElementLabel">Name</div><div class="extension_reset_css" style="display: inline;"><input type="text" id="AnnotateMsgDialogInput" class="extension_reset_css TextInputElement" spellcheck="false"></div><br><div class="extension_reset_css" id="AnnotateMsgDialogInputErr"></div><div class="extension_reset_css" id="AnnotateMsgDialogInputInfo"></div></div><div id="AnnotateMsgDialogProgressBarContainer" class="extension_reset_css"><div id="AnnotateMsgDialogProgressBar" class="extension_reset_css"></div></div><div id="AnnotateMsgDialogCheckboxContainer" class="extension_reset_css"><input type="checkbox" id="AnnotateMsgDialogCheckbox" class="extension_reset_css"><label for="AnnotateMsgDialogCheckbox" class="extension_reset_css CheckboxLabel">Do not remind again</label></div><div id="AnnotateMsgDialogBtn1" class="extension_reset_css AnnotateMsgDialogBtn"></div><div id="AnnotateMsgDialogBtn2" class="extension_reset_css AnnotateMsgDialogBtn"></div><div id="AnnotateMsgDialogBtn3" class="extension_reset_css AnnotateMsgDialogBtn"></div><div id="AnnotateMsgDialogBtnDisabled" class="extension_reset_css AnnotateMsgDialogBtn AnnotateMsgDialogBtnDisabled"></div><div id="AnnotateMsgDialogTutorialDiv" class="extension_reset_css"></div><div style="height: 37px; width: 1px; display: block;"></div></div><div id="AnnotateImportPdfBtn" class="extension_reset_css " style="display: none; touch-action: pan-x pan-y; right: 2px; top: 48px;"><div class="extension_reset_css " id="AnnotateImportPdfBtnDiv"><div class="extension_reset_css " style="width: 195px; margin: 0px;"><div class="extension_reset_css " id="AnnotateImportPdfBtnIcon" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsSAAALEgHS3X78AAACfklEQVRoge2asW/TUBDGvyZpExqkOEICxJCYBbFUeCiwQSRGlgJbB8jIGMQ/UAb2bN0QLIzQpQMDIkhZKhhSsSEBcQekMhCHAo1LW6N76qvtyKlb/M4OlX/SkyzHeXffe/fuTpbhOE7gAKABaAFwEh7kgzbSzwMEdMbAeTk6RxIAYG6MnJejHuRrBsEY8m61WkWv1xu5U1yDbJJtD3qQp6ME7KPrOjRNC3tMOWSTbIcRKmDcSQUkTSogaVIBSZMKIJY+/kHt+S8stAforO+omPLQ5KJO0Hxn48Hrgbh+u7aNR20b1VIG9ZlJNGbz0AoTrAIi78DchUmU8n4nzf6uEKIvbojd4SSyAL2UwdKdadybmRIr76VvO7j14jfqy5tsEiKHEFGr5MTA3nlovt8S4SR59mFLXD29eUKFOR/KsxCFVGu+iJe3p32hRSLokKuGLY1KIV4RdC66/V2ldljrgHEmK0R4WWjbSm2wFzISQQdcojorxVKJG7OuAMpMKotdLAJoF7xYtqNs7th6oUuns4d46uiwCrAG7kqvfuPpkdgEtNa2UW7+ELnfVJw6vSipxEHIdEm5//umP+YNheHEtgOap4Atf3LbCtkvqSpobAJqFXeVv1ius2eLE6JLPb+4AePJz8h22EJINnfYe7EpWfnqHmYV6ZRtByj3D7fXw3gL3L/CmkYvngqe/nolhzfzRTQu5yPbYAsh4r4xhVef/Qe4eaMgOlVVsAogR6+cy2J1fQePrxXw8Gr0FR+GVQCxcvck6/zpe6GkSQUkTSogaVIBSRMqoNvtwrKs2N0km2Q7jFGVeP+fpmmiXC7H5PaBdAJ/PJYfe/w3n9s4Dv4CmiVSwXi9N7YAAAAASUVORK5CYII=&quot;);"></div><div class="extension_reset_css " id="AnnotateImportPdfBtnText">Open with Annotate</div></div><div id="ImportPdfShowToolbarIcon" class="extension_reset_css ShowToolbarIcon ShowToolbarIconImportPdf extension_icon extension_icon-import_pdf" title="Import PDF into Content Library" style="color: rgb(0, 0, 0);"></div><div id="ImportPdfCloseIcon" class="extension_reset_css ShowToolbarIcon ImportPdfCloseIcon extension_icon extension_icon-close" title="Close" style="color: rgb(0, 0, 0);"></div></div></div><div id="AnnotateLoadAnnotationsBtn" class="extension_reset_css annotate-no-print " style="display: none; touch-action: pan-x pan-y; right: 2px; top: 48px;"><div id="AnnotateLoadAnnotationsBtnDiv" class="extension_reset_css"><div class="extension_reset_css" style="width: 205px; margin: 0px;"><div class="extension_reset_css" id="AnnotateLoadAnnotationsBtnIcon" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsSAAALEgHS3X78AAACfklEQVRoge2asW/TUBDGvyZpExqkOEICxJCYBbFUeCiwQSRGlgJbB8jIGMQ/UAb2bN0QLIzQpQMDIkhZKhhSsSEBcQekMhCHAo1LW6N76qvtyKlb/M4OlX/SkyzHeXffe/fuTpbhOE7gAKABaAFwEh7kgzbSzwMEdMbAeTk6RxIAYG6MnJejHuRrBsEY8m61WkWv1xu5U1yDbJJtD3qQp6ME7KPrOjRNC3tMOWSTbIcRKmDcSQUkTSogaVIBSZMKIJY+/kHt+S8stAforO+omPLQ5KJO0Hxn48Hrgbh+u7aNR20b1VIG9ZlJNGbz0AoTrAIi78DchUmU8n4nzf6uEKIvbojd4SSyAL2UwdKdadybmRIr76VvO7j14jfqy5tsEiKHEFGr5MTA3nlovt8S4SR59mFLXD29eUKFOR/KsxCFVGu+iJe3p32hRSLokKuGLY1KIV4RdC66/V2ldljrgHEmK0R4WWjbSm2wFzISQQdcojorxVKJG7OuAMpMKotdLAJoF7xYtqNs7th6oUuns4d46uiwCrAG7kqvfuPpkdgEtNa2UW7+ELnfVJw6vSipxEHIdEm5//umP+YNheHEtgOap4Atf3LbCtkvqSpobAJqFXeVv1ius2eLE6JLPb+4AePJz8h22EJINnfYe7EpWfnqHmYV6ZRtByj3D7fXw3gL3L/CmkYvngqe/nolhzfzRTQu5yPbYAsh4r4xhVef/Qe4eaMgOlVVsAogR6+cy2J1fQePrxXw8Gr0FR+GVQCxcvck6/zpe6GkSQUkTSogaVIBSRMqoNvtwrKs2N0km2Q7jFGVeP+fpmmiXC7H5PaBdAJ/PJYfe/w3n9s4Dv4CmiVSwXi9N7YAAAAASUVORK5CYII=&quot;);"></div><div class="extension_reset_css" id="AnnotateLoadAnnotationsBtnText">Load previous annotations</div></div><div id="LoadAnnotationsShowToolbarIcon" class="extension_reset_css ShowToolbarIcon ShowToolbarIconLoadAnnotations extension_icon extension_icon-annotation_toolbar" title="Show annotation toolbar" style="color: rgb(0, 0, 0);"></div><div id="LoadAnnotationsCloseIcon" class="extension_reset_css ShowToolbarIcon LoadAnnotationsCloseIcon extension_icon extension_icon-close" title="Close" style="color: rgb(0, 0, 0);"></div></div></div><div class="extension_reset_css AnnotateNet_widget" data-id="Toast" id="AnnotateExtensionToastDiv"><div class="extension_reset_css AnnotateNet_widget annotateellipsis" data-id="Toast_ExtensionWidget" style="display: block;"><div class="extension_reset_css AnnotateNet_widget annotateclickable" data-id="Widget" title="Resize" style="z-index: 8; display: none;"></div></div><div class="extension_reset_css AnnotateNet_widget annotateclickable" data-id="Toast_ExtensionWidget" style="display: none; text-align: center; color: rgb(233, 30, 99); width: 48px; height: 36px; line-height: 36px;"><div class="extension_reset_css AnnotateNet_widget annotateclickable" data-id="Widget" title="Resize" style="z-index: 8; display: none;"></div></div></div><div class="extension_reset_css annotate-modal" style="display: none; width: 420px; height: 110px; top: 404px; left: 717.5px;"><div class="annotate-modal-header" style="display: none;"><div class="annotate-modal-header-text"></div></div><div class="extension_reset_css annotate-loader-modal-content" style="height: 110px;"><div class="extension_reset_css AnnotateDivElement AnnotateLoading" style="height: 36px; width: 36px; left: 24px; top: 0px;"></div><div class="extension_reset_css AnnotateDivElement annotate-wrap-text" style="height: auto; width: 356px; left: 40px; top: 0px;">Loading...</div></div><div class="annotate-modal-footer" style="display: none;"></div></div><div class="extension_reset_css AnnotateNet_widget AnnotateReviewNotesButton" data-id="ExtensionWidget" style="display: none; z-index: 2147483644;"><div class="extension_reset_css AnnotateNet_widget annotateclickable" data-id="Widget" title="Resize" style="z-index: 8; display: none;"></div></div></body></html>
