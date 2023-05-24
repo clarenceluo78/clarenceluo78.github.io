@@ -98,13 +98,13 @@
                 <table width="100%" align="center" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
                     <tbody><tr>
                         <td>
-                            <papertitle>Singing Voice Conversion Project</papertitle>
+                            <papertitle>Singing Voice Conversion Project Demo</papertitle>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <b>
-                                <author>Haoyan Luo</author>
+                                <author>Haoyan Luo 119010221</author>
                             </b>
                             <p>
                                 <!-- CSC3160/MDS6002, Spring 2023 -->
@@ -141,10 +141,10 @@
                             </li>
                             <li style="text-indent:20px; list-style-type: circle">To introduce singing voice domain
                                 knowledge</li> -->
-                            <li class="contents">Baseline: WORLD-based SVC</li>
+                            <!-- <li class="contents">Baseline: WORLD-based SVC</li>
                             <li style="text-indent:20px; list-style-type: circle">What is WORLD?</li>
                             <li style="text-indent:20px; list-style-type: circle">Overview</li>
-                            <li style="text-indent:20px; list-style-type: circle">Implementation Details</li>
+                            <li style="text-indent:20px; list-style-type: circle">Implementation Details</li> -->
                             <!-- <li style="text-indent:20px; list-style-type: circle">Demo</li> -->
                             <li class="contents">Demo</li>
                             <li style="text-indent:20px; list-style-type: circle">Target Audio (ProSinger)</li>
@@ -205,21 +205,28 @@
                                 <b>李健</b>:
                                 <br><br>
                                 <audio controls="">
-                                    <source src="./data/LiJiawei/LiJiawei-source.wav" type="audio/mpeg">
+                                    <source src="../data/svc/lijian.wav" type="audio/mpeg">
                                 </audio>
                             </p>
                             <p>
                                 <b>石倚洁</b>:
                                 <br><br>
                                 <audio controls="">
-                                    <source src="./data/LiJiawei/LiJiawei-target.wav" type="audio/mpeg">
+                                    <source src="../data/svc/shiyijie.wav" type="audio/mpeg">
                                 </audio>
                             </p>
                             <p>
                                 <b>Adele</b>:
                                 <br><br>
                                 <audio controls="">
-                                    <source src="./data/LiJiawei/LiJiawei-target.wav" type="audio/mpeg">
+                                    <source src="../data/svc/adele.wav" type="audio/mpeg">
+                                </audio>
+                            </p>
+                            <p>
+                                <b>Opencpop Target</b>:
+                                <br><br>
+                                <audio controls="">
+                                    <source src="../data/svc/opencpop.wav" type="audio/mpeg">
                                 </audio>
                             </p>
                         </td>
@@ -381,31 +388,23 @@
                             </p>
                         </td>
                     </tr> -->
-                    <tr>
+                    <!-- <tr>
                         <td>
-                            <b>Target Singer Samples</b> (Opencpop):
+                            <b>Target Singer Sample</b> (Opencpop):
                         </td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <td>
                             <table width="100%" border="0" cellspacing="0" cellpadding="12" style="table-layout:fixed;">
                                 <tbody><tr>
                                     <td>
-                                        <audio controls="" src="./data/Opencpop/2001000021.wav">
+                                        <audio controls="" src="../data/svc/opencpop.wav">
                                         </audio>
                                     </td>
-                                    <td>
-                                        <audio controls="" src="./data/Opencpop/2032001221.wav">
-                                        </audio>
-                                    </td>
-                                    <td>
-                                        <audio controls="" src="./data/Opencpop/2080002938.wav">
-                                        </audio>
-                                    </td>
-                                </tr>
+                                    
                             </tbody></table>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>
                             <b>Conversion Samples</b> (Convert different singers of M4Singer to Opencpop / ProSinger):
@@ -415,10 +414,12 @@
                         <td>
                             <table width="100%" border="1" cellspacing="0" cellpadding="12" style="border-color: rgb(250, 250, 250);">
                                 <colgroup>
-                                    <col span="1" style="width: 10%;">
-                                    <col span="1" style="width: 30%;">
-                                    <col span="1" style="width: 30%;">
-                                    <col span="1" style="width: 30%;">
+                                    <col span="1" style="width: 5%;">
+                                    <col span="1" style="width: 19%;">
+                                    <col span="1" style="width: 19%;">
+                                    <col span="1" style="width: 19%;">
+                                    <col span="1" style="width: 19%;">
+                                    <col span="1" style="width: 19%;">
                                 </colgroup>
                                 <tbody><tr>
                                     <td align="center">
@@ -428,10 +429,16 @@
                                         <b>Ground Truth</b>
                                     </td>
                                     <td align="center">
-                                        <b>WORLD</b>
+                                        <b>Opencpop Target</b>
                                     </td>
                                     <td align="center">
-                                        <b>Converted Result</b>
+                                        <b>Adele</b>
+                                    </td>
+                                    <td align="center">
+                                        <b>Li Jian</b>
+                                    </td>
+                                    <td align="center">
+                                        <b>Yijie Shi</b>
                                     </td>
                                 </tr>
                                 <tr>
@@ -439,15 +446,23 @@
                                         Soprano-2
                                     </td>
                                     <td>
-                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000.wav" style="width: 100%;">
+                                        <audio controls="" src="../data/svc/Soprano-2可惜不是你_0016.wav" style="width: 100%;">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000_world.wav" style="width: 100%;">
+                                        <audio controls="" src="../data/svc/Soprano-2可惜不是你_0016.wav_0key_opencpop.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" src="./data/WORLD/Soprano-2_可惜不是你_0000_pred.wav" style="width: 100%;">
+                                        <audio controls="" src="../data/svc/Soprano-2可惜不是你_0016.wav_0key_Adele.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Soprano-2可惜不是你_0016.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Soprano-2可惜不是你_0016.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -456,15 +471,23 @@
                                         Soprano-3
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Soprano-3告白气球_0017.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Soprano-3告白气球_0017.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Soprano-3_一抹夕阳_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Soprano-3告白气球_0017.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Soprano-3告白气球_0017.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Soprano-3告白气球_0017.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -473,15 +496,23 @@
                                         Alto-4
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-4寂寞的恋人啊_0026.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-4寂寞的恋人啊_0026.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-4_一首简单的歌_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-4寂寞的恋人啊_0026.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Alto-4寂寞的恋人啊_0026.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Alto-4寂寞的恋人啊_0026.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -490,15 +521,23 @@
                                         Alto-5
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-5红玫瑰_0002.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-5红玫瑰_0002.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Alto-5_一千年以后_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Alto-5红玫瑰_0002.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Alto-5红玫瑰_0002.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Alto-5红玫瑰_0002.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -507,15 +546,23 @@
                                         Tenor-6
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-6南方姑娘_0023.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-6南方姑娘_0023.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-6_像我这样的人_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-6南方姑娘_0023.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Tenor-6南方姑娘_0023.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Tenor-6南方姑娘_0023.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -524,15 +571,23 @@
                                         Tenor-7
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-7晚婚_0034.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-7晚婚_0034.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Tenor-7_一生守候_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Tenor-7晚婚_0034.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Tenor-7晚婚_0034.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Tenor-7晚婚_0034.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -541,15 +596,23 @@
                                         Bass-2
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-2夜空里最亮的星_0000.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-2夜空里最亮的星_0000.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-2_DEAR_JOHN_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-2夜空里最亮的星_0000.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Bass-2夜空里最亮的星_0000.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Bass-2夜空里最亮的星_0000.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
@@ -558,15 +621,23 @@
                                         Bass-3
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-3十年_0008.wav">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000_world.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-3十年_0008.wav_0key_opencpop.flac">
                                         </audio>
                                     </td>
                                     <td>
-                                        <audio controls="" style="width: 100%;" src="./data/WORLD/Bass-3_像我这样的人_0000_pred.wav">
+                                        <audio controls="" style="width: 100%;" src="../data/svc/Bass-3十年_0008.wav_0key_Adele.flac">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Bass-3十年_0008.wav_0key_李健.flac" style="width: 100%;">
+                                        </audio>
+                                    </td>
+                                    <td>
+                                        <audio controls="" src="../data/svc/Bass-3十年_0008.wav_0key_YijieShi.flac" style="width: 100%;">
                                         </audio>
                                     </td>
                                 </tr>
