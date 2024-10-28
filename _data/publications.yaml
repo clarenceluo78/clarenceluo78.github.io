@@ -1,0 +1,91 @@
+papers:
+# put an image next to titl/Users/rewang/Documents/rosewang2008.github.io/images/tcp.gife
+  - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
+    authors: "<b>Haoyan Luo</b>, Lucia Specia"
+    paper_pdf: https://arxiv.org/abs/2410.13077
+    venue: "arXiv"
+    code: https://clarenceluo78.github.io/
+    poster: "assets/posters/mod-poster.pdf"
+    selected: y
+
+  - title: "Explainability in Large Language Models: Pathways to Refinement and Alignment"
+    authors: "<b>Haoyan Luo</b>"
+    paper_pdf: assets/papers/MRes_thesis_haoyanluo.pdf
+    venue: "MRes Thesis"
+    poster: "assets/posters/mod-poster.pdf"
+    selected: y
+
+  - title: "🔎 From Understanding to Utilization: A Survey on Explainability for Large Language Models"
+    authors: "<b>Haoyan Luo</b>, Lucia Specia"
+    paper_pdf: https://arxiv.org/abs/2401.12874
+    venue: "arXiv"
+    selected: y
+
+  - title: "🎙️ Singer-adaptive Singing Voice Conversion"
+    authors: <b>Haoyan Luo</b>
+    paper_pdf: assets/papers/singer-adaptive-svc.pdf
+    venue: "Open-source Project"
+    code: https://github.com/clarenceluo78/singer-adaptive-svc
+    demo: assets/pages/svc.html
+
+  - title: "<img src='images/openfe.svg' style='width: 40px; height: 20px; margin-right: -1px;'> OpenFE: Automated Feature Generation With Expert-level Performance"
+    authors: Tianping Zhang, Zheyu Zhang, <b>Haoyan Luo</b>, Fengyuan Liu, Wei Cao, Jian Li
+    paper_pdf: https://arxiv.org/abs/2401.12874
+    venue: "Fortieth International Conference on Machine Learning (ICML 2023)"
+    code: https://github.com/IIIS-Li-Group/OpenFE
+    selected: y
+
+  - title: "ActiveAD: Enhancing Anomaly Detection in Tabular Data through Active Learning Strategies"
+    authors: <b>Haoyan Luo</b>, Xiaofan Gui, Wei Cao, Jiang Bian
+    paper_pdf: assets/papers/ActiveAD.pdf
+    venue: "arXiv"
+    code: https://github.com/clarenceluo78/ActiveAD
+    selected: y
+
+  - title: "🗺️ Steering the Networked Temporal Point Processes via Controlling the Network Graph"
+    authors: <b>Haoyan Luo</b>, Shuang Li
+    paper_pdf: assets/papers/Covid19-RL.pdf
+    venue: "Open-source Project"
+    code: https://github.com/clarenceluo78
+
+  - title: "🛠️ Deep-Learning-Lookup: Deep Learning Algorithms and Utils in Python"
+    authors: <b>Haoyan Luo</b>
+    venue: "Open-source Project"
+    code: https://github.com/clarenceluo78/deep-learning-lookup
+
+  - title: "Mindy: a web application for creating and managing online document"
+    authors: <b>Haoyan Luo</b>, Xiaowen Shao, Wentao Ge, Yanyu Chen
+    paper_pdf: https://github.com/clarenceluo78/Mindy/blob/main/Group10%20Final%20Report.pdf
+    venue: "Open-source Project"
+    code: https://github.com/clarenceluo78/Mindy
+
+  # - title: "<img src='images/tcp.gif' style='width: 30px; height: 30px; margin-right: -1px;'> Tutor CoPilot: A Human-AI Approach for Scaling Real-Time Expertise"
+  #   authors: "<b>Rose E. Wang</b>, Ana Ribeiro, Carly Robinson, Dora Demszky, Susanna Loeb."
+  #   venue: "Society for Research on Educational Effectiveness (SREE 2024), UChicago Becker Friedman Institute AI for Social Science Conference 2024, American Economic Association (AEA 2024)."
+  #   paper_pdf: https://arxiv.org/abs/2410.03017
+  #   pap: https://osf.io/8d6ha/
+  #   selected: y
+  #   video: https://www.youtube.com/watch?v=tWZwmHEtaiQ
+  #   news: "Featured in <a href='https://www.the74million.org/article/study-ai-assisted-tutoring-boosts-students-math-skills/'>the 74</a>, <a href='https://www.k12dive.com/news/ai-tutor-effectiveness-stanford-university/728980/'>K-12 Dive</a>, <a href='https://www.marktechpost.com/2024/10/08/researchers-at-stanford-university-introduce-tutor-copilot-a-human-ai-collaborative-system-that-significantly-improves-real-time-tutoring-quality-for-students/'>MarkTechPost</a>, <a href='https://danmeyer.substack.com/p/ais-delivery-problem-and-how-tutor'>Dan Meyer's blog</a>, <a href='https://acceleratelearning.stanford.edu/initiative/scale/'>Stanford Accelerator for Learning</a>."
+    
+  # - title: "🌁 Bridging the Novice-Expert Gap via Models of Decision-Making"
+  #   authors: "<b>Rose E. Wang</b>, Qingyang Zhang, Carly Robinson, Susanna Loeb, Dora Demszky"
+  #   venue: "North American Chapter of the Association for Computational Linguistics (NAACL 2024)"
+  #   selected: y
+  #   paper_pdf: https://arxiv.org/pdf/2310.10648
+  #   code: https://github.com/rosewang2008/bridge
+  #   video: https://www.youtube.com/watch?v=bX5monUe93M
+  #   poster: "assets/posters/bridge-poster.pdf"
+  #   news: "Featured in <a href='https://hai.stanford.edu/news/designing-natural-language-processing-tools-teachers'>Stanford HAI</a> and Dan Meyer's <a href='https://danmeyer.substack.com/p/one-way-teachers-and-ai-could-help'>blog</a>"
+  #   extra_venue: "Invited Presentation at the National Student Support Accelerator Conference (2024)."
+
+  # - title: "<img src='images/eck.png' style='width: 25px; height: 25px; margin-right: 2px;'>Edu-ConvoKit: An Open-Source Library for Education Conversation Data"
+  #   authors: "<b>Rose E. Wang</b>, Dora Demszky"
+  #   venue: "North American Chapter of the Association for Computational Linguistics (NAACL 2024)"
+  #   extra_venue: "Invited Presentation at Education Data Mining (EDM 2024) LLM for EdTech Workshop, National Tutoring Observatory, Learning Analytics Learning Network"
+  #   paper_pdf: https://arxiv.org/pdf/2402.05111
+  #   code: https://github.com/stanfordnlp/edu-convokit 
+  #   poster: "assets/posters/edu_convokit-poster.pdf"
+  #   video: https://www.youtube.com/watch?v=zdcI839vAko
+  #   news: "Featured in <a href='https://the-learning-agency.com/the-cutting-ed/article/math-anxiety-there-are-apps-for-that/'>The Learning Agency</a>"
+  #   award: "Winner of 2024 Tools Competition 🏆"

@@ -1,709 +1,160 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+---
+layout: default
+title: Home
+---
+<!-- ========== BIO ========== -->
+<div class="docs-section" id="bio">
+  <h4>Bio</h4>
+  <p>
+    I am an MRes (Master of Research) student in Machine Learning at 
+    <a href="https://www.imperial.ac.uk/" target="_blank">Imperial College London</a>, 
+    supervised by Prof. <a href="https://scholar.google.co.uk/citations?user=wVl_z8kAAAAJ&hl=en" target="_blank">Lucia Specia</a>. 
+    I obtained my B.Eng. degree in Computer Science from 
+    <a href="https://www.cuhk.edu.cn/" target="_blank">The Chinese University of Hong Kong, Shenzhen</a>.
+    Currently, I am working as an AI & Data Science Associate at 
+    <a href="https://www.jpmorganchase.com/" target="_blank">J.P. Morgan</a>, where I design and implement LLM-based solutions for impactful, real-world applications in finance.
+    Previously, I interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/" target="_blank">Microsoft Research Asia</a> 
+    and <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Lab</a>. I was also a Big Data Engineer Intern at 
+    <a href="https://healthcare.tencent.com/" target="_blank">Tencent</a> and a Software Engineer Intern at 
+    <a href="https://www.xishanju.com/" target="_blank">Seasun Entertainment</a>.
+</p>
+<p>
+  <b>I am actively looking for PhD opportunities starting in 2025.</b> If you think my background and research interests align with your group, please feel free to reach out!
+</p>
+<p>
+  My research interests lie primarily in <b>machine learning</b> and <b>natural language processing</b>, with a focus on:
+  <ul>
+      <li>Explainable and interpretable machine learning models: developing a deeper understanding of large-scale language systems.</li>
+      <li>Applied machine learning: building fast and automated machine learning systems.</li>
+  </ul>
+</p>
+
+<p>
+  During my undergraduate studies, I served as a student coordinator at Shaw College and was a host in the Communication and Public Relations Office. 
+  I also led <span style="color: red">TEDxCUHKSZ</span> as president (check out our <a href="https://mp.weixin.qq.com/s/bGJ-UqhS5GuEfWJ0t2lppQ" target="_blank">annual events</a>!), 
+  promoting our slogan: "ideas worth spreading" :p
+</p>
+
+<p>
+  In my free time, I'm a passionate piano and cello enthusiast. I also enjoy playing football, basketball, and tennis. 
+  Go Warriors and KTBFFH<span>&#128153;</span>
+</p>
+</div>
+<div class="docs-section" id="news">
+  <h4>Recent News</h4>
+  {% assign current_talks = site.data.news.news | where: "category", "current" %}
+  {% for talk in current_talks %}
+    <b>{{ talk.time }}</b>: {{ talk.events }}</a> </br>
+  {% endfor %}
+</div>
 
 
-  <title>Haoyan Luo</title>
+<div class="docs-section" id="publications">
+  <h4>Publications</h4>
 
-  <meta name="author" content="Haoyan Luo">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <p>Please find all publications on my <a href="https://scholar.google.com/citations?user=V-dlwF4AAAAJ&hl=en" target="_blank">Google Scholar</a>.  </p> -->
+  <!-- <p>* denotes equal contributions.</p> -->
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>〽️</text></svg>">
-  <style>
-    /* Add some basic styling to the nav bar */
-    .navbar {
-        background-color: white;
-        overflow: hidden;
-    }
+  <ul class="tab-nav">
+    <!-- <li><div class="button active" data-ref="#papers-sel">Selected and Recent Papers</div></li> -->
+    <li><div class="button active" data-ref="#papers-all">Projects</div></li> 
+    <li><div class="button" data-ref="#papers-sel">Recent Papers</div></li>
+  </ul>
 
-    /* Style the nav bar links */
-    .navbar a {
-        float: left;
-        display: block;
-        color: black;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+  <div class="tab-content">
 
-    /* Change color on hover */
-    .navbar a:hover {
-        background-color: white;
-        color: rgb(201, 195, 195);
-    }
-  </style>
+    <div class="tab-pane" id="papers-sel">
+      {% assign papers = site.data.publications.papers | where: "selected", "y" %}
+      {% for paper in papers %}
+        <div class="paper">
+          <p class="title"><b>{{ paper.title }}</b>
+            {% if paper.paper_pdf %}
+              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">PDF</a>
+            {% endif %}
+            {% if paper.pap %}
+              <a class="button" href="{{ paper.pap }}" target="_blank">Preregistration</a>
+            {% endif %}
+            {% if paper.slides %}
+              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+            {% endif %}
+            {% if paper.poster %}
+              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+            {% endif %}
+            {% if paper.video %}
+              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+            {% endif %}
+            {% if paper.code %}
+              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+            {% endif %}
+            {% if paper.demo %}
+              <a class="button" href="{{ paper.demo }}" target="_blank">Demo</a>
+            {% endif %}
+          </p>
+          <p>{{ paper.authors }}</p>
+          <p><i>{{ paper.venue }}</i></p>
+          <p><i>{{ paper.extra_venue }}</i></p>
+          {% if paper.award %}
+            <p><b style="color:#4682b4">{{ paper.award }}</b></p>
+          {% endif %}
+          {% if paper.news %}
+            <p><b style="color:#4682b4">{{ paper.news }}</b></p>
+          {% endif %}
+           <div class="paper-buttons">
 
-</head>
-
-<body>
-  <!-- <div class="navbar" style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <a href="index.html">Home</a>
-    <a href="index.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div> -->
-  <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Haoyan Luo (罗 皓严)</name>
-              </p>
-              <p>
-                I am a MRes (Master of Research) student in Machine Learning at <a href="https://www.imperial.ac.uk/">Imperial College London</a>, supervised by Prof. <a href="https://scholar.google.co.uk/citations?user=wVl_z8kAAAAJ&hl=en" target="_blank">Lucia Specia</a>.
-                I obtained my B.Eng. degree in Computer Science from <a href="https://www.cuhk.edu.cn/" target="_blank"> the Chinese University of Hong Kong, Shenzhen</a>.
-                Prev. interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/" target="_blank">MSRA</a> and <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Lab</a>.
-                <!-- , advised by Prof. <a href="https://scholar.google.com/citations?hl=zh-CN&user=z8_x7C8AAAAJ" target="_blank">Haizhou Li</a> and Prof. <a href="https://scholar.google.com/citations?hl=zh-CN&user=HxCZsCUAAAAJ" target="_blank">Shuang Li</a>. -->
-                <!-- I am an Undergraduate Senior Student majored in Computer Science (minored in Economics) in <a href="https://www.cuhk.edu.cn/" target="_blank"> the Chinese University of Hong Kong, Shenzhen</a>.
-                During my self-motivated school researches, I was supervised by <a href="https://scholar.google.com/citations?hl=zh-CN&user=HxCZsCUAAAAJ" target="_blank"> Prof. Shuang Li </a>
-                and <a href="https://scholar.google.com/citations?hl=zh-CN&user=z8_x7C8AAAAJ" target="_blank"> Prof. Haizhou Li</a>. -->
-              </p>
-              <p>
-                My research interests mainly lie in machine learning and natural language processing, especially in:
-                <ul>
-                  <li> Explainable and interpretable machine learning models: develop understanding of large-scale language systems. </li>
-                  <!-- <li> Sequence modelling: develop novel models to capture complex dynamics in sequences based on the interpretation. </li> -->
-                  <li> Applied machine learning: build fast and automate machine learning systems. </li>
-                </ul>
-                <!-- Besides my school researches, I had also worked as a software engineer intern at <a href="https://www.xishanju.com/" target="_blank">Seasun Entertainment, Kingsoft </a> and a big data engineer intern at <a href="https://healthcare.tencent.com/" target="_blank">Tencent HealthCare </a>,
-				        and a research intern at Machine Learning group, <a href="http://msra.com/" target="_blank">MSR Asia </a>, under the supervision of <a href="https://scholar.google.com/citations?hl=zh-CN&user=pZBEnY8AAAAJ" target="_blank"> Dr. Jiang Bian</a>.  -->
-              <!-- <em> <font color="red"><strong>This website is currently under dvelopment!! Please come back later!</strong></font></em><br> -->
-              <p style="text-align:center">
-                <a href="mailto:haoyanl99@gmail.com">Email</a> &nbsp/&nbsp
-                <a href="https://github.com/clarenceluo78/" target="_blank">Github</a> &nbsp/&nbsp
-                <a href="https://www.linkedin.com/in/haoyan-luo-58421a1ab/" target="_blank">Linkedin</a> &nbsp/&nbsp
-                <a href="https://scholar.google.com/citations?user=saFP000AAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
-              </p>
-              <!-- <p>
-                I will join the AIML MRes program at <a href="https://www.imperial.ac.uk/" target="_blank">Imperial</a> in 2023 Fall.
-              </p> -->
-              
-
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <!-- <a href="images/roca.jpeg"><img style="border-radius:50%;width:100%;max-width:100%;box-shadow: 0 0 10px 5px rgba(75, 74, 74, 0.3);" alt="profile photo" src="images/roca.jpeg" class="hoverZoomLink"></a> -->
-              <img style="border-radius:50%;width:100%;max-width:100%;box-shadow: 0 0 10px 5px rgba(75, 74, 74, 0.3);" alt="profile photo" src="images/roca.jpeg" class="hoverZoomLink">
-              <!-- <img style="border-radius:50%;width:100%;max-width:100%" alt="profile photo" src="images/hy_fav.jpeg" class="hoverZoomLink"> -->
-              
-            </td>
-          </tr>
-        </tbody></table>
-
-        <!-- Work Experience  -->
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" id="experience">
-        <tr>
-          <td>
-          <heading>Work Experience</heading>
-          </td>
-        </tr>
-        </table>
-        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20" style="padding-left: 20px;">
-        <!-- JPMC Internship  -->
-        <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/jpmc.png" alt="jpmc_logo" width="120" height="70" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="https://www.jpmorganchase.com/" target="_blank">JP Morgan Chase</a>
-            </span></td>
-          <td> Research Associate </td>
-          <td> <em>(September, 2024 - Present)</em></td>
-        </tr>
-        <!-- Shanghai AI Lab Internship  -->
-        <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/shanghai_ailab.png" alt="shanghaiailab_logo" width="130" height="50" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Lab</a>
-            </span></td>
-          <td> Research Intern </td>
-          <td> <em>(July, 2023 - Jan, 2024)</em></td>
-        </tr>
-          <!-- MSRA Internship  -->
-        <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/msra.png" alt="microsoft_logo" width="140" height="50" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="http://msra.com/" target="_blank">Micosoft Research Asia</a>
-            </span></td>
-          <td> Research Intern </td>
-          <td> <em>(July, 2022 - Feb, 2023)</em></td>
-        </tr>
-        <!-- Tencent Internship  -->
-        <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/tencent.png" alt="tencent_logo" width="130" height="100" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="https://healthcare.tencent.com/" target="_blank">Tencent</a>
-            </span></td>
-          <td> Big Data Engineer Intern </td>
-          <td> <em>(June, 2021 - Sep, 2021)</em></td>
-        </tr>
-        <!-- SRIBD RA  -->
-        <!-- <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/sribd_logo.png" alt="sribd_logo" width="60" height="60" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="https://www.xishanju.com/" target="_blank">Shenzhen Research Institute of Big Data</a>
-            </span></td>
-          <td> Research Assistant </td>
-          <td> <em>(Sep, 2020 - March, 2021)</em></td>
-        </tr> -->
-        <!-- Kingsoft Internship  -->
-        <tr>
-          <td width="12.5%" style="text-align: center;"><img src="images/kingsoft.jfif" alt="kingsoft_logo" width="120" height="60" valign="center"></td>
-          <td> <span style="color:#1772d0; font-weight:bold"> <a href="https://www.xishanju.com/" target="_blank">Seasun Entertainment</a>
-            </span></td>
-          <td> Software Engineer Intern </td>
-          <td> <em>(June, 2020 - Sep, 2020)</em></td>
-        </tr>
-        </table>
-
-        <!-- Research Experience  -->
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
-            <heading>Publications</heading>
-            <!-- <p>
-              My research interests lie in the intersection of machine learning and deep reinforcement learning -- bringing machine learning as efficient solutions into real-world application scenarios.
-            </p> -->
-          </td>
-          </tr>
-        </tbody></table>
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <!-- <em> <font color="red"><strong> Not a full list. Under dvelopment!</strong></font></em><br> -->
-        
-         <!-- 2024 Alignment Paper -->
-         <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id='2024align'>
-              <object data='./papers/alignment.pdf' type='application/pdf' style='width:210px;height:108px;'>
-                  <embed src='./papers/alignment.pdf' type='application/pdf' />
-              </object>
-            </div>
-            <img src='./papers/alignment.pdf' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2024align.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2024align.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> Towards Robustness in Language Model Alignment: The Role of Representation Bias </papertitle>
-            <br> In Progress
-            <br>
-                  <a href="https://clarenceluo78.github.io/" target="_blank">pdf</a>
-            <br>
-          </td>
-        </tr> -->
-
-        <!-- 2024 MoD Paper -->
-        <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2024align'><img src='./papers/MoD.png' style='width:210px;height:108px;'></div>
-            <img src='./papers/MoD.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2024lMoD.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2024lMoD.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> Tuning Language Models by Mixture-of-Depths Ensemble </papertitle>
-            <br> <strong>Haoyan Luo</strong>, Lucia Specia
-            <br> Under Review
-            <br>
-                  <a href="https://arxiv.org/abs/2410.13077" target="_blank">pdf</a>
-            <br>
-          </td>
-        </tr>
-
-        <!-- 2023 Survey Paper -->
-        <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2023survey'><img src='./papers/2023survey.png' style='width:180px;height:108px;'></div>
-            <img src='./papers/2023survey.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2023survey.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2023survey.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> From Understanding to Utilization: A Survey on Explainability for Large Language Models </papertitle>
-            <br>  <strong>Haoyan Luo</strong>, Lucia Specia
-            <br>  <em>arXiv</em>
-            <br>
-                  <a href="https://arxiv.org/abs/2401.12874" target="_blank">pdf</a>
-            <br>
-          </td>
-        </tr>
-
-        <!-- 2022 OpenFE Paper -->
-        <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2022openfe'><img src='./papers/2022openfe.png' style='width:210px;height:108px;'></div>
-            <img src='./papers/2022openfe.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2022openfe.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2022openfe.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> OpenFE: Automated Feature Generation With Expert-level Performance </papertitle>
-            <br> Tianping Zhang, Zheyu Zhang, <strong>Haoyan Luo</strong>, Fengyuan Liu, Wei Cao, Jian Li
-            <br>  <em>International Conference on Machine Learning (<strong>ICML' 23</strong>) </em>
-            <br>
-                  <a href="https://arxiv.org/pdf/2211.12507.pdf" target="_blank">pdf</a>
-                  /
-                  <a href="https://github.com/IIIS-Li-Group/OpenFE">code</a>
-                  /
-                  <a href="papers/zhang2023openfe.bib">bibtex</a>
-            <br>
-          </td>
-        </tr>
-
-        <!-- 2023 ActiveAD Paper -->
-        <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2023activead'><img src='./projects/activead.png' style='width:210px;height:108px;'></div>
-            <img src='./projects/activead.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('projects/activead.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('projects/activead.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> ActiveAD: Enhancing Anomaly Detection in Tabular Data through Active Learning Strategies </papertitle>
-            <!-- <br> <strong>Haoyan Luo</strong> -->
-            <!-- <br>  <em>arXiv</em> -->
-            <br>
-                  <a href="./papers/ActiveAD.pdf" target="_blank">pdf</a>
-            <br>
-          </td>
-        </tr>
-
-        <!-- 2022 GroupAE Paper -->
-        <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2022groupae'><img src='./papers/2022groupae.png' style='width:210px;height:128px;'></div>
-            <img src='./papers/2022groupae.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2022groupae.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2022groupae.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> GroupAE: A Robust autoencoder for Tabular Anomaly Detection </papertitle>
-            <br> Xinyi Shen, <strong>Haoyan Luo</strong>, Hangting Ye, Wei Cao, Jiang Bian
-            <br>  <em>Under Revision </em>
-          </td>
-        </tr> -->
-
-        <!-- 2022 COVIDRL Paper -->
-        <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-          <td width="25%">
-            <div class="one">
-            <div class="two" id = '2022covidRL'><img src='./papers/2022covidRL.png' style='width:210px;height:108px;'></div>
-            <img src='./papers/2022covidRL.png' style='width:128px;height:108px;'>
-            </div>
-            <script type="text/javascript">
-            function style_start() {
-            document.getElementById('papers/2022covidRL.png').style.opacity = "1";
-            }
-            function style_stop() {
-            document.getElementById('papers/2022covidRL.png').style.opacity = "0";
-            }
-            style_stop()
-            </script>
-          </td>
-          <td valign="top" width="75%">
-                <papertitle> Steering the Networked Temporal Point Processes via Controlling the Network Graph </papertitle>
-            <br> <strong>Haoyan Luo</strong>, Qixiang Wang, Chao Yang, Shuang Li
-            <br>  <em>Under Revision </em>
-          </td>
-        </tr> -->
-      </table>
-
-      <!-- Key Courses -->
-      <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <tr>
-        <td style="padding:20px;width:100%;vertical-align:middle">
-          <heading>Key Courses</heading>
-          <ul>
-            <li> <i>CS224N <b>Natural Language Processing with Deep Learning</b></i> at Stanford, instructed by <a href="https://nlp.stanford.edu/~manning/" target="_blank"> Chris Manning </a>
-            
-            <li> <i>DDA4210 <b>Advanced Machine Learning</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=en&user=vdJsnhIAAAAJ" target="_blank"> Jicong Fan </a> </li>
-            <li> <i>DDA4250 <b>Mathematical Introduction to Deep Learning</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=fymm-XQAAAAJ" target="_blank"> Arnulf Jentzen </a> </li>
-            <li> <i>CSC3160 <b>Fundamentals of Speech and Language Processing</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=en&user=K6zhweAAAAAJ" target="_blank"> Zhizheng Wu </a> </li>
-
-            <li> <i>CS285 <b>Deep Reinforcement Learning</b></i> at UC Berkeley, instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=8R35rCwAAAAJ" target="_blank"> Sergey Levine </a>
-            <li> <i><b>Deep Learning Specializations</b></i> at Coursera, instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=mG4imMEAAAAJ" target="_blank"> Andrew Ng </a>. See my <a href="certificates/DL_Specializations.pdf">Certificates</a> </li>
-            <li> <i>DDA2020 <b>Machine Learning</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=z8_x7C8AAAAJ" target="_blank"> Haizhou Li </a> </li>
-            <li> <i><b>Reinforcement Learning</b></i> at the University of Alberta, instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=t5zdD_IAAAAJ" target="_blank"> Martha White </a> and <a href="https://scholar.google.com/citations?hl=zh-CN&user=1GqGhcsAAAAJ" target="_blank"> Adam White </a>
-             -->
-            <!-- <li> <i>DDA4220 <b>Deep Learning and Applications</b> </i> instructed by <a href="https://scholar.google.com/citations?user=ZJwZdtgAAAAJ&hl=en" target="_blank"> Ruimao Zhang </a> </li> -->
-            <!-- <li> <i>CSC4160 <b>Cloud Computing</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=igFuAncAAAAJ" target="_blank"> Kai Hwang </a> </li>
-            <li> <i>CSC4120 <b>Design and Analysis of Algorithm</b> </i> instructed by <a href="https://scholar.google.com/citations?user=_vDxlTUAAAAJ&hl=en" target="_blank"> Costas Courcoubetis </a> </li>
-            <li> <i>CSC4005 <b>Distributed and Parallel Computing</b> </i> instructed by <a href="http://www.cs.nthu.edu.tw/~ychung/" target="_blank"> Yeh-Ching Chung </a> </li>
-            <li> <i>CSC4001 <b>Software Engineering</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=vg0moI0AAAAJ" target="_blank"> Pinjia He </a> </li>
-            <li> <i>CSC3170 <b>Database System</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=TKQA0-0AAAAJ" target="_blank"> Clement Leung </a> </li>
-            <li> <i>CSC3150 <b>Operating System</b> </i> instructed by <a href="http://www.cs.nthu.edu.tw/~ychung/" target="_blank"> Yeh-Ching Chung </a> </li>
-            <li> <i>CSC3050 <b>Computer Architecture</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=HX4VSZ0AAAAJ" target="_blank"> Fangxin Wang </a> </li>
-            <li> <i>MAT3007 <b>Optimization</b> </i> instructed by <a href="https://scholar.google.com/citations?hl=zh-CN&user=bEJO6d8AAAAJ" target="_blank"> Zizhuo Wang </a> </li>
-          </ul>
-        </td>
-      </tr>
-    </tbody></table> -->
-
-    <!-- Projects -->
-    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-      <tr>
-        <td>
-        <heading>Selected Projects</heading>
-        </td>
-      </tr>
-    </table>
-    <!-- xllm1 -->
-    <table width="100%" align="center" border="0" cellspacing="0">
-      <!-- <em> <font color="red"><strong> Not a full list. Under dvelopment!</strong></font></em><br> -->
-      <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = '2023xllm1'><img src='./projects/curve.png' style='width:210px;height:108px;'></div>
           </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/xllm1.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/xllm1.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Dissecting token expression in language models</projecttitle>
-          <br>
-                Work in progress
-          <p></p>
-          <p>
-            Probe and visualize the token representation in LLMs. Dissecting the knowledge and relation propogation in the next-token generating process with mechanistic interpretability and decomposition theory.
-          </p>
-          <br>
-        </td>
-      </tr> -->
-      <!-- activead -->
-      <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td valign="top"  width="25%">
-          <div class="one">
-          <div class="two" id = '2022openfe'><img src='./projects/activead.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/activead.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/activead.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td width="75%">
-              <projecttitle> Active Learning for Anomaly Detection on Tabular Data </projecttitle>
-          <br>
-                <a href="https://clarenceluo78.github.io" target="_blank">ppt</a>
-                /
-                <a href="https://github.com/clarenceluo78/ActiveAD">code</a>
-          <p></p>
-          <p>
-            Benchmarking active learning query strategies for anomaly detection based on ADBench datasets.
-          </p>
-          <br>
-        </td>
-      </tr> -->
-      <!-- svc -->
-      <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = '2022openfe'><img src='./projects/svc.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/svc.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/svc.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Singer-adaptive Singing Voice Conversion </projecttitle>
-          <br>
-                <a href="https://clarenceluo78.github.io/papers/singer-adaptive-svc.pdf" target="_blank">paper</a>
-                /
-                <a href="https://github.com/clarenceluo78/singer-adaptive-svc">code</a>
-                /
-                <a href="./pages/svc.html">demo</a>
-          <p></p>
-          <p>
-            Finding the probable weakness of the existing SVC systems in converting to professional singing voice and building a model with generalizability across various target vocalists while preserving high- quality voice conversion
-          </p>
-          <br>
-        </td>
-      </tr>
-      <!-- al_survey -->
-      <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = '2022openfe'><img src='./projects/al_survey.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/al_survey.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/al_survey.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Deep Active Learning </projecttitle>
-          <br>
-                <a href="https://clarenceluo78.github.io" target="_blank">ppt</a>
-          <p></p>
-          <p>
-            A comprehensive survey of Deep Active Learning at ML Group weekly seminar.
-          </p>
-          <br>
-        </td>
-      </tr> -->
-      <!-- covid_19_rl -->
-      <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = 'covid_19_rl'><img src='./projects/covid_rl.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/covid_rl.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/covid_rl.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Steering the Networked Temporal Point Processes via Controlling the Network Graph </projecttitle>
-          <br>
-                <a href="https://github.com/clarenceluo78/COVID_NJSDE_A_Matrix" target="_blank">code</a>
-          <p></p>
-          <p>
-            Developed a model-based reinforcement learning strategy for optimizing network dynamics, using neural ODEs to model multivariate temporal point
-            processes. Created a novel approach that manipulates graph topology for effective intervention in networks, such as mitigating
-            epidemics or easing traffic congestion.
-          </p>
-          <br>
-        </td>
-      </tr>
-      <!-- deeprl_mtpp -->
-      <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = 'deeprl_mtpp'><img src='./projects/deeprl_mtpp.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/deeprl_mtpp.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/deeprl_mtpp.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Deep Reinforcement Learning of Marked Temporal Point Process </projecttitle>
-          <br>
-                <a href="https://clarenceluo78.github.io" target="_blank">report</a>
-          <p></p>
-          <p>
-            From the perspective of deep reinforcement learning towards marked temporal point process, research report at the RL research group.
-          </p>
-          <br>
-        </td>
-      </tr> -->
-      <!-- dl_lookup -->
-      <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = 'dl_lookup'><img src='./projects/dl_lookup.png' style='width:220px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/dl_lookup.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/dl_lookup.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Deep-Learning-Lookup: Deep Learning Algorithms and Utils in Python </projecttitle>
-          <br>
-                <a href="https://github.com/clarenceluo78/deep-learning-lookup" target="_blank">code</a>
-          <p></p>
-          <p>
-            Implemented various deep learning code examples (notebooks and python scripts) and useful utility functions including data manipulation, visualization, training, and evaluation.
-          </p>
-          <br>
-        </td>
-      </tr>
-      <!-- parallel simulation -->
-      <!-- <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = '2022openfe'><img src='./projects/parallel_simulation.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/parallel_simulation.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/parallel_simulation.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Parallel Computing Simulation </projecttitle>
-          <br>
-                <a href="https://github.com/clarenceluo78/parallel_computing_simulation" target="_blank">code</a>
-          <p></p>
-          <p>
-            Interesting parallel simulation programs inplemented through MPI, Pthread, OpenMP, CUDA, and hybrid methods all in C++.
-            Some of the contents are from CUHK(SZ) course Parallel Programming.
-          </p>
-          <br>
-        </td>
-      </tr> -->
-      <!-- mindy -->
-      <tr onmouseout="style_stop()" onmouseover="style_start()" >
-        <td width="25%">
-          <div class="one">
-          <div class="two" id = '2022openfe'><img src='./projects/mindy.png' style='width:210px;height:108px;'></div>
-          </div>
-          <script type="text/javascript">
-          function style_start() {
-          document.getElementById('projects/mindy.png').style.opacity = "1";
-          }
-          function style_stop() {
-          document.getElementById('projects/mindy.png').style.opacity = "0";
-          }
-          style_stop()
-          </script>
-        </td>
-        <td valign="top" width="75%">
-              <projecttitle> Mindy: a web application for creating and managing online document </projecttitle>
-          <br>
-                <a href="https://clarenceluo78.github.io" target="_blank">report</a>
-                /
-                <a href="https://github.com/clarenceluo78/Mindy">code</a>
-          <p></p>
-          <p>
-            Mindy is a web application for creating and managing online document. Mindy (meaning ”map your mind”), aims to provide a platform for users to map their mind online instead of on a piece of paper, which has unlimited space, be easy to digitize, and make it searchable.
-          </p>
-          <br>
-        </td>
-      </tr>
-      
+        </div>
+      {% endfor %}
+    </div>
 
-   
-      <!-- MISC  -->
-
-      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-          <td>
-          <heading>Misc.</heading>
-          </td>
-        </tr>
-        </table>
-        <table width="100%" align="center" border="0" cellpadding="20">
-        <tr>
-          <td width="75%" valign="center">
-          <p>
-            During my undergraduate studies, I was a student coordinator in Shaw college and a host in the Communication and Public Relations Office.
-            I was also the president of <span style="color: red">TEDx</span>CUHKSZ (check our <a href="https://mp.weixin.qq.com/s/bGJ-UqhS5GuEfWJ0t2lppQ" target="_blank">annual events</a>!) and spent a lot of effort promoting our slogan: "ideas worth spreading" :p
-
+    <!-- All PAPERS -->
+    <div class="tab-pane active" id="papers-all">
+      {% assign papers = site.data.publications.papers %}
+      {% for paper in papers %}
+        <div class="paper">
+          <p class="title"><b>{{ paper.title }}</b>
+            {% if paper.paper_pdf %}
+              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">PDF</a>
+            {% endif %}
+            {% if paper.pap %}
+              <a class="button" href="{{ paper.pap }}" target="_blank">Preregistration</a>
+            {% endif %}
+            {% if paper.slides %}
+              <a class="button" href="{{ paper.slides | prepend: site.baseurl }}" target="_blank">Slides</a>
+            {% endif %}
+            {% if paper.poster %}
+              <a class="button" href="{{ paper.poster | prepend: site.baseurl }}" target="_blank">Poster</a>
+            {% endif %}
+            {% if paper.video %}
+              <a class="button" href="{{ paper.video }}" target="_blank">Video</a>
+            {% endif %}
+            {% if paper.code %}
+              <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
+            {% endif %}
+            {% if paper.demo %}
+              <a class="button" href="{{ paper.demo }}" target="_blank">Demo</a>
+            {% endif %}
           </p>
-            <p>
-            During my free time, I am a huge piano and cello lover. I also enjoy playing football, basketball and tennis. Go Warriors and KTBFFH<span>&#128153;</span>
-          </p>
-          </td>
-        </tr>
-      </table>
+          <p>{{ paper.authors }}</p>
+          <p><i>{{ paper.venue }}</i></p>
+          <p><i>{{ paper.extra_venue }}</i></p>
+          {% if paper.award %}
+          <p><b style="color:#4682b4">{{ paper.award }}</b></p>
+          {% endif %}
+          {% if paper.news %}
+            <p><b style="color:#af64f0">{{ paper.news }}</b></p>
+          {% endif %}
+          <div class="paper-buttons">
 
-            <!-- Credits  -->
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+<div class="docs-section" id="ack">
+  <h4>Acknowledgement</h4>
+  <p>
+    This website uses the template by <a href="https://github.com/msaveski/www_personal">Martin Saveski</a> and design by <a href="https://github.com/rosewang2008/rosewang2008.github.io">Rose E. Wang</a>.
+  </p>
+  <!-- <a href="https://clustrmaps.com/site/1bqht"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=8s1iQpLk56ukACBHDngC5bAbDOZrCEaMHB0f96ePHwc&cl=ffffff" /></a> -->
 
-            <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-            <tr>
-              <td>
-              <br>
-              <p align="right">
-                <font size="2">
-                Website Credits to Jon Barron <a href="https://github.com/jonbarron/jonbarron_website"><strong>source code</strong></a> and Siddhartha Gairola <a href="https://github.com/sidgairo18/sidgairo18.github.io"><strong>source code</strong></a>
-                <br>
-                <br>
-				<a href="https://clustrmaps.com/site/1bqht"  title="Visit tracker"><img src="//www.clustrmaps.com/map_v2.png?d=8s1iQpLk56ukACBHDngC5bAbDOZrCEaMHB0f96ePHwc&cl=ffffff" /></a>
-<!--                 <a href="https://clustrmaps.com/site/1bof3"  title="Visit tracker"><img src="https://clustrmaps.com/map_v2.png?d=_c7s3tBLJ_u7PFZGsisO1FwUwEDTW0z1Xx_0zRnk25U&cl=ffffff" /></a> -->
-      	<!--	<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=8s1iQpLk56ukACBHDngC5bAbDOZrCEaMHB0f96ePHwc"></script>  
-		-->
-	</font>
-              </p>
-              </td>
-            </tr>
-            </table>
-
-
-          </td>
-          </tr>
-        </table>
-</body>
-</html>
+</div>

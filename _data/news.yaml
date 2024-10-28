@@ -1,0 +1,24 @@
+news:
+  - time: "September 2024"
+    events: "Started a position as an NLP Research Associate at <a href='https://www.jpmorganchase.com/'>J.P. Morgan</a>."
+    category: "current"
+
+  - time: "September 2024"
+    events: "Completed an MRes in AI & Machine Learning at <a href='https://www.imperial.ac.uk/'>Imperial</a> with <i>Distinction</i>."
+    category: "current"
+
+  - time: "August 2024"
+    events: "Finished MRes thesis titled: \"<i>Explainable and Controllable Language Models: Interpretability and Its Applications\"</i>."
+    category: "current"
+  
+  - time: "August 2024"
+    events: "<a href='https://arxiv.org/abs/2410.13077'>MoD</a> paper, a new PEFT framework using mixture-of-depths ensembles, available on arXiv."
+    category: "current"
+
+  - time: "June 2024"
+    events: "Awarded the CSC Cambridge PhD Scholarship."
+    category: "current"
+
+  - time: "April 2024"
+    events: "<a href='https://arxiv.org/abs/2401.12874'>Survey</a> paper on explainability and its applications for large language models is available on arXiv."
+    category: "current"
