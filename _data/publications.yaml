@@ -1,5 +1,13 @@
 papers:
 # put an image next to titl/Users/rewang/Documents/rosewang2008.github.io/images/tcp.gife
+  - title: "Localized Projectional Editing for Debiasing Language Models"
+    authors: "<b>Haoyan Luo</b>, Lucia Specia"
+    paper_pdf: https://clarenceluo78.github.io/
+    venue: "arXiv"
+    code: https://clarenceluo78.github.io/
+    # poster: "assets/posters/mod-poster.pdf"
+    selected: y
+  
   - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://arxiv.org/abs/2410.13077
@@ -30,7 +38,7 @@ papers:
 
   - title: "<img src='images/openfe.svg' style='width: 40px; height: 20px; margin-right: -1px;'> OpenFE: Automated Feature Generation With Expert-level Performance"
     authors: Tianping Zhang, Zheyu Zhang, <b>Haoyan Luo</b>, Fengyuan Liu, Wei Cao, Jian Li
-    paper_pdf: https://arxiv.org/abs/2401.12874
+    paper_pdf: https://icml.cc/virtual/2023/poster/24950
     venue: "Fortieth International Conference on Machine Learning (ICML 2023)"
     code: https://github.com/IIIS-Li-Group/OpenFE
     selected: y
