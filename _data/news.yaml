@@ -16,9 +16,5 @@ news:
     category: "current"
 
   - time: "June 2024"
-    events: "Cambridge PhD Scholarship awarded."
-    category: "current"
-
-  - time: "June 2024"
     events: "<a href='https://arxiv.org/abs/2401.12874'>Survey</a> paper on explainability and its applications for large language models is available on arXiv."
     category: "current"
