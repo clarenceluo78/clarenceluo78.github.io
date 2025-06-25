@@ -1,10 +1,10 @@
 news:
-  - time: "September 2024"
-    events: "Joined <a href='https://www.jpmorganchase.com/'>J.P. Morgan</a> as an AI Associate."
+  - time: "April 2025"
+    events: "Starting PhD at Cambridge"
     category: "current"
 
   - time: "September 2024"
-    events: "Completed MRes (Master of Research) in AI & Machine Learning at <a href='https://www.imperial.ac.uk/'>Imperial College</a> with <i>Distinction</i>."
+    events: "Joined <a href='https://www.jpmorganchase.com/'>J.P. Morgan</a> as an AI Associate."
     category: "current"
 
   - time: "August 2024"
@@ -15,6 +15,6 @@ news:
     events: "<a href='https://arxiv.org/abs/2410.13077'>MoD</a> paper, a new PEFT framework using mixture-of-depths ensembles, available on arXiv."
     category: "current"
 
-  - time: "June 2024"
-    events: "<a href='https://arxiv.org/abs/2401.12874'>Survey</a> paper on explainability and its applications for large language models is available on arXiv."
-    category: "current"
+  # - time: "June 2024"
+  #   events: "<a href='https://arxiv.org/abs/2401.12874'>Survey</a> paper on explainability and its applications for large language models is available on arXiv."
+  #   category: "current"
