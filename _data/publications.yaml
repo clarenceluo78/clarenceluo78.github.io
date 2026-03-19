@@ -1,10 +1,17 @@
 papers:
-# put an image next to titl/Users/rewang/Documents/rosewang2008.github.io/images/tcp.gife
+  - title: "Industry-Aligned Granular Topic Modeling"
+    authors: "Sae Young Moon, Myeongjun Erik Jang, <b>Haoyan Luo</b>, Chunyang Xiao, Antonios Georgiadis, Fran Silavong"
+    paper_pdf: https://arxiv.org/pdf/2601.11762
+    venue: "arXiv"
+    # code: https://clarenceluo78.github.io/
+    # poster: "assets/posters/mod-poster.pdf"
+    selected: y
+
   - title: "Localized Projectional Editing for Debiasing Language Models"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://clarenceluo78.github.io/
     venue: "arXiv"
-    code: https://clarenceluo78.github.io/
+    # code: https://clarenceluo78.github.io/
     # poster: "assets/posters/mod-poster.pdf"
     selected: y
   
