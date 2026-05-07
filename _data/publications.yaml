@@ -1,4 +1,12 @@
 papers:
+  - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
+    authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
+    paper_pdf: https://clarenceluo78.github.io/
+    venue: "arXiv"
+    # code: https://clarenceluo78.github.io/
+    # poster: "assets/posters/mod-poster.pdf"
+    selected: y
+
   - title: "Industry-Aligned Granular Topic Modeling"
     authors: "Sae Young Moon, Myeongjun Erik Jang, <b>Haoyan Luo</b>, Chunyang Xiao, Antonios Georgiadis, Fran Silavong"
     paper_pdf: https://arxiv.org/pdf/2601.11762
@@ -13,7 +21,7 @@ papers:
     venue: "arXiv"
     # code: https://clarenceluo78.github.io/
     # poster: "assets/posters/mod-poster.pdf"
-    selected: y
+    # selected: y
   
   - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
