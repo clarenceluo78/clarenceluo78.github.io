@@ -1,9 +1,8 @@
 papers:
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
-    paper_pdf: https://clarenceluo78.github.io/
+    paper_pdf: https://arxiv.org/pdf/2605.06342
     venue: "arXiv"
-    # code: https://clarenceluo78.github.io/
     # poster: "assets/posters/mod-poster.pdf"
     selected: y
 
