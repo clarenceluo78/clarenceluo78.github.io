@@ -73,7 +73,7 @@ title: Home
 
   <div class="tab-content">
 
-    <div class="tab-pane" id="papers-sel">
+    <div class="tab-pane active" id="papers-sel">
       {% assign papers = site.data.publications.papers | where: "selected", "y" %}
       {% for paper in papers %}
         <div class="paper">
@@ -117,7 +117,7 @@ title: Home
     </div>
 
     <!-- All PAPERS -->
-    <div class="tab-pane active" id="papers-all">
+    <div class="tab-pane" id="papers-all">
       {% assign papers = site.data.publications.papers %}
       {% for paper in papers %}
         <div class="paper">

@@ -2,7 +2,7 @@ papers:
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     paper_pdf: https://arxiv.org/pdf/2605.06342
-    venue: "Mechanistic Interpretability Workshop at ICML 2026"
+    venue: "ICML 2026 Workshop on Mechanistic Interpretability"
     # poster: "assets/posters/mod-poster.pdf"
     selected: y
 
