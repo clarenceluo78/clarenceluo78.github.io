@@ -4,11 +4,13 @@ title: Home
 ---
 <!-- ========== BIO ========== -->
 <div class="docs-section" id="bio">
-  <h4>Bio</h4>
+  <h4>About</h4>
   <p>
     I am a PhD student in Machine Learning at 
     <a href="https://www.cam.ac.uk/" target="_blank">the University of Cambridge</a>, 
-    where I am affiliated with Darwin College and the Department of Computer Science.
+    advised by Prof. <a href="https://www.cl.cam.ac.uk/~mj201/" target="_blank">Mateja Jamnik</a>.
+    I am affiliated with <a href="https://www.darwin.cam.ac.uk/" target="_blank">Darwin College</a> and the
+    <a href="https://www.cst.cam.ac.uk/" target="_blank">Department of Computer Science and Technology</a>.
     Prior to this, I completed my MRes in Machine Learning at 
     <a href="https://www.imperial.ac.uk/" target="_blank">Imperial College London</a>, 
     supervised by Prof. <a href="https://scholar.google.co.uk/citations?user=wVl_z8kAAAAJ&hl=en" target="_blank">Lucia Specia</a>.
@@ -30,24 +32,24 @@ title: Home
 
 
 <p>
-  I'm interested in <b>interpreting</b> language models and, thus, <b>controlling</b> them:
-  <ul style="margin-top: -10px;"></ul>
-  <ul>
-      <li>
-        <i>Scaling concept-based interpretability</i>: identify, characterize, and intervene on internal representations from language models.
-        <!-- <a href="https://clarenceluo78.github.io/" target="_blank">[CB]</a> -->
-        <a href="https://arxiv.org/abs/2401.12874" target="_blank">[xLLM]</a>
-        <a href="https://arxiv.org/abs/2410.13077" target="_blank">[MoD]</a>
-        <a href="https://arxiv.org/pdf/2605.06342" target="_blank">[SKOP]</a>
-      </li>
-      <li>
-        <i>Applied machine learning / agentic systems</i>: designing efficient, automated agentic pipelines for real-world deployment at scale.
-        <a href="https://arxiv.org/abs/2211.12507" target="_blank">[OpenFE]</a>
-        <a href="https://clarenceluo78.github.io/assets/papers/ActiveAD.pdf" target="_blank">[ActiveAD]</a>
-        <a href="https://arxiv.org/pdf/2601.11762" target="_blank">[TIDE]</a>
-      </li>
-  </ul>
+  My research centers on making large language models more <b>interpretable, controllable, and useful in real-world systems</b>.
+  I am especially interested in understanding the internal representations that drive model behavior, and in turning this understanding into reliable interventions, editing methods, and agentic workflows. Currently, my work spans two connected directions:
 </p>
+<ul>
+  <li>
+    <i>Mechanistic interpretability and model control</i>: developing methods to identify, characterize, and intervene on concepts and circuits inside language models.
+    <a href="https://arxiv.org/abs/2401.12874" target="_blank">[xLLM]</a>
+    <a href="https://arxiv.org/abs/2410.13077" target="_blank">[MoD]</a>
+    <a href="https://arxiv.org/pdf/2605.06342" target="_blank">[SKOP]</a>
+  </li>
+  <li>
+    <i>Applied ML and agentic systems</i>: building scalable systems for document intelligence, automated feature engineering, anomaly detection, and domain-facing LLM applications.
+    <a href="https://arxiv.org/abs/2211.12507" target="_blank">[OpenFE]</a>
+    <a href="https://clarenceluo78.github.io/assets/papers/ActiveAD.pdf" target="_blank">[ActiveAD]</a>
+    <a href="https://arxiv.org/pdf/2601.11762" target="_blank">[TIDE]</a>
+    <a href="https://github.com/VectifyAI/PageIndex" target="_blank">[PageIndex]</a>
+  </li>
+</ul>
 
 <!-- </div>
 <div class="docs-section" id="news">
@@ -102,6 +104,9 @@ title: Home
           </p>
           <p>{{ paper.authors }}</p>
           <p><i>{{ paper.venue }}</i></p>
+          {% if paper.description %}
+            <p>{{ paper.description }}</p>
+          {% endif %}
           <p><i>{{ paper.extra_venue }}</i></p>
           {% if paper.award %}
             <p><b style="color:#4682b4">{{ paper.award }}</b></p>
@@ -116,9 +121,9 @@ title: Home
       {% endfor %}
     </div>
 
-    <!-- All PAPERS -->
+    <!-- Projects -->
     <div class="tab-pane" id="papers-all">
-      {% assign papers = site.data.publications.papers %}
+      {% assign papers = site.data.publications.projects %}
       {% for paper in papers %}
         <div class="paper">
           <p class="title"><b>{{ paper.title }}</b>
@@ -140,13 +145,17 @@ title: Home
             {% if paper.code %}
               <a class="button" href="{{ paper.code }}" target="_blank">Code</a>
             {% endif %}
+            {% if paper.chat %}
+              <a class="button" href="{{ paper.chat }}" target="_blank">Chat Platform</a>
+            {% endif %}
             {% if paper.demo %}
               <a class="button" href="{{ paper.demo }}" target="_blank">Demo</a>
             {% endif %}
           </p>
           <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
-          <p><i>{{ paper.extra_venue }}</i></p>
+          {% if paper.description %}
+            <p>{{ paper.description }}</p>
+          {% endif %}
           {% if paper.award %}
           <p><b style="color:#4682b4">{{ paper.award }}</b></p>
           {% endif %}
