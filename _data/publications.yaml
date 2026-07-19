@@ -1,4 +1,9 @@
 papers:
+  - title: "Persistent Sparse Autoencoders: Learning Feature Timescales in Language Models"
+    authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
+    venue: "arXiv 2026"
+    selected: y
+
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     paper_pdf: https://arxiv.org/pdf/2605.06342
@@ -23,7 +28,7 @@ papers:
   - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://arxiv.org/abs/2410.13077
-    venue: "arXiv"
+    venue: "arXiv 2025"
     code: https://clarenceluo78.github.io/
     poster: "assets/posters/mod-poster.pdf"
     selected: y
@@ -38,7 +43,7 @@ papers:
   - title: "🔎 From Understanding to Utilization: A Survey on Explainability for Large Language Models"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://arxiv.org/abs/2401.12874
-    venue: "arXiv"
+    venue: "arXiv 2024"
     selected: y
 
   - title: "🎙️ Singer-adaptive Singing Voice Conversion"
@@ -58,7 +63,7 @@ papers:
   - title: "ActiveAD: Enhancing Anomaly Detection in Tabular Data through Active Learning Strategies"
     authors: <b>Haoyan Luo</b>, Xiaofan Gui, Wei Cao, Jiang Bian
     paper_pdf: assets/papers/ActiveAD.pdf
-    venue: "arXiv"
+    venue: "arXiv 2023"
     code: https://github.com/clarenceluo78/ActiveAD
     selected: y
 
