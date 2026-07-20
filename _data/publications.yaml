@@ -6,9 +6,9 @@ papers:
 
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
-    paper_pdf: https://arxiv.org/pdf/2605.06342
+    paper_pdf: https://openreview.net/pdf?id=BYTQ4nQRha
+    code: "https://github.com/clarenceluo78/skop-steering"
     venue: "ICML 2026 Workshop on Mechanistic Interpretability"
-    # poster: "assets/posters/mod-poster.pdf"
     selected: y
 
   - title: "Industry-Aligned Granular Topic Modeling"
@@ -21,7 +21,7 @@ papers:
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://clarenceluo78.github.io/
     venue: "arXiv"
-    # code: https://clarenceluo78.github.io/
+    code: https://clarenceluo78.github.io/
     # poster: "assets/posters/mod-poster.pdf"
     # selected: y
 
