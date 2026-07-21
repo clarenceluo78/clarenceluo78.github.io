@@ -2,6 +2,7 @@ papers:
   - title: "Persistent Sparse Autoencoders: Learning Feature Timescales in Language Models"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     venue: "arXiv 2026"
+    paper_pdf: "https://arxiv.org/abs/2607.17117"
     selected: y
 
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
