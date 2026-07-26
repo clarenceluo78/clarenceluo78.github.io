@@ -12,6 +12,14 @@ papers:
     venue: "ICML 2026 Workshop on Mechanistic Interpretability"
     selected: y
 
+  - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
+    authors: "<b>Haoyan Luo</b>, Lucia Specia"
+    paper_pdf: https://arxiv.org/abs/2410.13077
+    venue: "COLM 2026 Workshop on Actionable Interpretability"
+    code: https://clarenceluo78.github.io/
+    poster: "assets/posters/mod-poster.pdf"
+    selected: y
+
   - title: "Industry-Aligned Granular Topic Modeling"
     authors: "Sae Young Moon, Myeongjun Erik Jang, <b>Haoyan Luo</b>, Chunyang Xiao, Antonios Georgiadis, Fran Silavong"
     paper_pdf: https://arxiv.org/pdf/2601.11762
@@ -26,13 +34,6 @@ papers:
     # poster: "assets/posters/mod-poster.pdf"
     # selected: y
 
-  - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
-    authors: "<b>Haoyan Luo</b>, Lucia Specia"
-    paper_pdf: https://arxiv.org/abs/2410.13077
-    venue: "arXiv 2025"
-    code: https://clarenceluo78.github.io/
-    poster: "assets/posters/mod-poster.pdf"
-    selected: y
 
   - title: "Explainability in Large Language Models: Pathways to Refinement and Alignment"
     authors: "<b>Haoyan Luo</b>"
