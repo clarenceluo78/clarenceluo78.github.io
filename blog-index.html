@@ -1,0 +1,25 @@
+---
+layout: blog_listing
+title: "Haoyan's Blog"
+heading: "Haoyan's Blog"
+permalink: /blog/
+intro: "A personal blog about ideas, patterns, and questions I find worth exploring."
+---
+{% if site.posts.size > 0 %}
+<section class="post-list" aria-label="Haoyan's Blog posts">
+  {% for post in site.posts limit: site.blog.posts_per_page %}
+    {% include blog_post_card.html post=post %}
+  {% endfor %}
+</section>
+{% if site.posts.size > site.blog.posts_per_page %}
+<nav class="pagination pagination--first" aria-label="Post pagination">
+  <span></span>
+  <a rel="next" href="{{ '/blog/page/2/' | relative_url }}">Older <span aria-hidden="true">→</span></a>
+</nav>
+{% endif %}
+{% else %}
+<section class="empty-state">
+  <p>No posts yet. The first one is taking shape.</p>
+  <a href="{{ '/blog/feed.xml' | relative_url }}">Subscribe via RSS</a>
+</section>
+{% endif %}

@@ -2,6 +2,50 @@ source:      .
 destination: ./_site
 includes:    ./_includes
 
+title: "Haoyan Luo"
+url: "https://clarenceluo78.github.io"
+baseurl: ""
+lang: "en"
+permalink: /blog/:title/
+excerpt_separator: "<!--more-->"
+
+blog:
+  title: "Haoyan's Blog"
+  intro: "A personal blog about ideas, patterns, and questions I find worth exploring."
+  posts_per_page: 10
+  excerpt_words: 30
+  reading_words_per_minute: 220
+
 collections:
   projects:
     output: true
+  blog_tags:
+    output: true
+    permalink: /blog/tags/:name/
+  blog_pages:
+    output: true
+    permalink: /blog/page/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: blog_post
+      author: "Haoyan Luo"
+      toc: true
+  - scope:
+      path: ""
+      type: blog_tags
+    values:
+      layout: blog_tag
+  - scope:
+      path: ""
+      type: blog_pages
+    values:
+      layout: blog_page
+
+exclude:
+  - BLOGGING.md
+  - blogctl
+  - _site_preview

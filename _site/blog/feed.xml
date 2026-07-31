@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Haoyan&apos;s Blog</title>
+  <subtitle>A personal blog about ideas, patterns, and questions I find worth exploring.</subtitle>
+  <link href="http://localhost:4000/blog/feed.xml" rel="self"/>
+  <link href="http://localhost:4000/blog/"/>
+  <id>http://localhost:4000/blog/</id>
+  <updated>2026-07-31T10:56:40+08:00</updated>
+  <author><name>Haoyan (Ryan) Luo</name></author>
+  
+</feed>

@@ -1,0 +1,21 @@
+---
+layout: blog_listing
+title: Search
+heading: Search
+permalink: /blog/search/
+intro: "Search every post, then narrow the results with tags."
+---
+<section class="search" data-search-index="{{ '/blog/search-index.json' | relative_url }}">
+  <label class="search-label" for="blog-search-input">Search the full text</label>
+  <div class="search-box">
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+    <input id="blog-search-input" type="search" autocomplete="off" placeholder="Search titles, text, headings, and tags">
+  </div>
+  <div class="search-tags" aria-label="Filter by tags">
+    <p>Filter by tags</p>
+    <div id="search-tag-filters"></div>
+  </div>
+  <p id="search-status" class="search-status" aria-live="polite"></p>
+  <div id="search-results" class="search-results"></div>
+</section>
+<script defer src="{{ '/assets/blog/search.js' | relative_url }}"></script>

@@ -1,0 +1,240 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "date"
+require "fileutils"
+require "json"
+require "rexml/document"
+require "yaml"
+
+ROOT = File.expand_path(__dir__)
+DRAFTS = File.join(ROOT, "_drafts")
+POSTS = File.join(ROOT, "_posts")
+TAG_PAGES = File.join(ROOT, "_blog_tags")
+PAGINATION_PAGES = File.join(ROOT, "_blog_pages")
+PREVIEW_DESTINATION = File.join(ROOT, "_site_preview")
+
+def abort_with(message)
+  warn "Blog: #{message}"
+  exit 1
+end
+
+def slugify(value)
+  value
+    .downcase
+    .unicode_normalize(:nfkd)
+    .encode("ASCII", invalid: :replace, undef: :replace, replace: "")
+    .gsub(/[^a-z0-9]+/, "-")
+    .gsub(/\A-|-\z/, "")
+end
+
+def read_document(path)
+  source = File.read(path)
+  match = source.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+  abort_with("#{path.delete_prefix(ROOT + "/")} has no valid YAML front matter") unless match
+
+  data = YAML.safe_load(match[1], permitted_classes: [Date, Time], aliases: true) || {}
+  [data, source]
+rescue Psych::SyntaxError => error
+  abort_with("#{path.delete_prefix(ROOT + "/")} has invalid YAML: #{error.message}")
+end
+
+def document_paths(include_drafts: true)
+  paths = Dir.glob(File.join(POSTS, "*.{md,markdown,html}"))
+  paths.concat(Dir.glob(File.join(DRAFTS, "*.{md,markdown,html}"))) if include_drafts
+  paths.sort
+end
+
+def validate_document(path)
+  data, source = read_document(path)
+  relative = path.delete_prefix(ROOT + "/")
+  abort_with("#{relative} needs a title") if data["title"].to_s.strip.empty?
+  abort_with("#{relative} needs a stable slug") if data["slug"].to_s.strip.empty?
+  abort_with("#{relative} tags must be a YAML list") unless data["tags"].is_a?(Array)
+
+  source.scan(%r{(?:src|href)=["'](/?assets/blog/[^"'#?]+)|!?\[[^\]]*\]\((/?assets/blog/[^)\s]+)}) do |html_path, markdown_path|
+    asset = (html_path || markdown_path).sub(%r{\A/}, "")
+    abort_with("#{relative} references missing #{asset}") unless File.exist?(File.join(ROOT, asset))
+  end
+  true
+end
+
+def published_documents
+  Dir.glob(File.join(POSTS, "*.{md,markdown,html}")).sort.map do |path|
+    data, = read_document(path)
+    [path, data]
+  end
+end
+
+def remove_stale_generated(directory, keep)
+  Dir.glob(File.join(directory, "*.{md,markdown,html}")).each do |path|
+    next if keep.include?(path)
+
+    data, = read_document(path)
+    File.delete(path) if data["generated_by"] == "blog-helper"
+  end
+end
+
+def sync_generated_pages
+  FileUtils.mkdir_p([TAG_PAGES, PAGINATION_PAGES])
+  documents = published_documents
+  config = YAML.safe_load(File.read(File.join(ROOT, "_config.yml")), aliases: true) || {}
+  blog_title = config.dig("blog", "title") || "Blog"
+
+  tags = documents.flat_map { |(_, data)| data["tags"] || [] }.map(&:to_s).uniq.sort_by(&:downcase)
+  tag_paths = tags.map do |tag|
+    path = File.join(TAG_PAGES, "#{slugify(tag)}.md")
+    File.write(path, <<~MARKDOWN)
+      ---
+      title: "Posts tagged #{tag.gsub('"', '\\"')}"
+      heading: "#{tag.gsub('"', '\\"')}"
+      tag: "#{tag.gsub('"', '\\"')}"
+      generated_by: blog-helper
+      ---
+    MARKDOWN
+    path
+  end
+  remove_stale_generated(TAG_PAGES, tag_paths)
+
+  per_page = config.dig("blog", "posts_per_page").to_i
+  per_page = 10 if per_page < 1
+  total_pages = [(documents.length.to_f / per_page).ceil, 1].max
+  pagination_paths = (2..total_pages).map do |number|
+    path = File.join(PAGINATION_PAGES, "#{number}.md")
+    File.write(path, <<~MARKDOWN)
+      ---
+      title: "#{blog_title.gsub('"', '\\"')} · Page #{number}"
+      page_number: #{number}
+      total_pages: #{total_pages}
+      offset: #{(number - 1) * per_page}
+      generated_by: blog-helper
+      ---
+    MARKDOWN
+    path
+  end
+  remove_stale_generated(PAGINATION_PAGES, pagination_paths)
+
+  puts "Blog: generated #{tag_paths.length} tag pages and #{[total_pages - 1, 0].max} pagination pages"
+end
+
+def jekyll_command
+  File.exist?(File.join(ROOT, "Gemfile")) ? %w[bundle exec jekyll] : ["jekyll"]
+end
+
+def validate_built_output
+  missing = []
+  Dir.glob(File.join(PREVIEW_DESTINATION, "blog", "**", "*.html")).each do |file|
+    source = File.read(file)
+    source.scan(/(?:href|src)=["']([^"']+)["']/).flatten.each do |raw|
+      next if raw.empty? || raw.start_with?("http:", "https:", "mailto:", "data:", "//", "#")
+
+      path = raw.split(/[?#]/, 2).first
+      target = if path.start_with?("/")
+                 File.join(PREVIEW_DESTINATION, path)
+               else
+                 File.expand_path(path, File.dirname(file))
+               end
+      target = File.join(target, "index.html") if File.directory?(target) || File.extname(target).empty?
+      missing << "#{file.delete_prefix(PREVIEW_DESTINATION + "/")} -> #{raw}" unless File.exist?(target)
+    end
+  end
+  abort_with("built output has missing local links:\n  #{missing.uniq.join("\n  ")}") unless missing.empty?
+
+  JSON.parse(File.read(File.join(PREVIEW_DESTINATION, "blog", "search-index.json")))
+  REXML::Document.new(File.read(File.join(PREVIEW_DESTINATION, "blog", "feed.xml")))
+  REXML::Document.new(File.read(File.join(PREVIEW_DESTINATION, "sitemap.xml")))
+rescue JSON::ParserError, REXML::ParseException => error
+  abort_with("generated discovery data is invalid: #{error.message}")
+end
+
+def command_new(title)
+  abort_with("provide a post title, for example: ./blogctl new \"A Useful Pattern\"") if title.to_s.strip.empty?
+  slug = slugify(title)
+  abort_with("could not create a slug from that title") if slug.empty?
+  FileUtils.mkdir_p(DRAFTS)
+  path = File.join(DRAFTS, "#{slug}.md")
+  abort_with("#{path.delete_prefix(ROOT + "/")} already exists") if File.exist?(path)
+
+  File.write(path, <<~MARKDOWN)
+    ---
+    title: "#{title.gsub('"', '\\"')}"
+    slug: "#{slug}"
+    tags: []
+    toc: true
+    ---
+
+    Begin with the idea or question that makes this post worth reading.
+
+    <!--more-->
+
+    ## First section
+
+    Continue writing here.
+  MARKDOWN
+  FileUtils.mkdir_p(File.join(ROOT, "assets", "blog", slug))
+  puts "Blog: created _drafts/#{slug}.md"
+  puts "Blog: created assets/blog/#{slug}/"
+end
+
+def command_publish(slug)
+  slug = slugify(slug.to_s)
+  abort_with("provide the draft slug, for example: ./blogctl publish a-useful-pattern") if slug.empty?
+  candidates = Dir.glob(File.join(DRAFTS, "#{slug}.{md,markdown,html}"))
+  abort_with("could not find _drafts/#{slug}.md") if candidates.empty?
+  draft = candidates.first
+  validate_document(draft)
+  _data, source = read_document(draft)
+  date = Date.today.iso8601
+  source = source.sub(/\A---\s*\n/, "---\ndate: #{date}\n") unless source.match?(/^date:/)
+  FileUtils.mkdir_p(POSTS)
+  destination = File.join(POSTS, "#{date}-#{File.basename(draft)}")
+  abort_with("#{destination.delete_prefix(ROOT + "/")} already exists") if File.exist?(destination)
+  File.write(destination, source)
+  File.delete(draft)
+  sync_generated_pages
+  puts "Blog: published locally as #{destination.delete_prefix(ROOT + "/")}"
+  puts "Blog: no Git operations were performed"
+end
+
+def command_check
+  paths = document_paths
+  paths.each { |path| validate_document(path) }
+  FileUtils.rm_rf(PREVIEW_DESTINATION)
+  command = jekyll_command + ["build", "--drafts", "--destination", PREVIEW_DESTINATION]
+  abort_with("Jekyll build failed") unless system(*command, chdir: ROOT)
+  validate_built_output
+  puts "Blog: checked #{paths.length} documents, local links, search data, RSS, and sitemap"
+end
+
+def command_preview
+  sync_generated_pages
+  command = jekyll_command + ["serve", "--drafts", "--destination", PREVIEW_DESTINATION, "--livereload"]
+  puts "Blog: previewing drafts; press Ctrl-C to stop"
+  exec(*command, chdir: ROOT)
+end
+
+command = ARGV.shift
+case command
+when "new"
+  command_new(ARGV.join(" "))
+when "publish"
+  command_publish(ARGV.shift)
+when "sync"
+  sync_generated_pages
+when "check"
+  command_check
+when "preview"
+  command_preview
+else
+  puts <<~HELP
+    Usage:
+      ./blogctl new "Post title"   Create a Markdown draft and asset directory
+      ./blogctl preview            Preview the site locally, including drafts
+      ./blogctl check              Validate content and run a draft-inclusive build
+      ./blogctl publish <slug>     Move a draft into _posts with today's date
+      ./blogctl sync               Regenerate tag and pagination source pages
+
+    This helper never runs Git commands.
+  HELP
+  exit(command.nil? ? 0 : 1)
+end

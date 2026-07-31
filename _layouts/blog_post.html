@@ -1,0 +1,104 @@
+---
+layout: blog_base
+---
+{% assign words = page.content | number_of_words %}
+{% assign reading_time = words | divided_by: site.blog.reading_words_per_minute %}
+{% assign remainder = words | modulo: site.blog.reading_words_per_minute %}
+{% if remainder > 0 %}{% assign reading_time = reading_time | plus: 1 %}{% endif %}
+{% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
+<main id="main-content" class="post-main">
+  <article class="post">
+    <header class="post-header blog-reading-column">
+      <a class="post-header__back" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">←</span> {{ site.blog.title }}</a>
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta post-meta--large">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.last_modified_at %}
+          <span aria-hidden="true">·</span>
+          <span>Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></span>
+        {% endif %}
+        <span aria-hidden="true">·</span>
+        <span>{{ reading_time }} min read</span>
+        <span aria-hidden="true">·</span>
+        <span>{{ page.author | default: site.data.main_info.name }}</span>
+      </div>
+      {% if page.tags and page.tags.size > 0 %}
+      <ul class="tag-list" aria-label="Tags">
+        {% for tag in page.tags %}
+        {% assign generated_tag = site.blog_tags | where: "tag", tag | first %}
+        {% if generated_tag %}
+          {% assign tag_url = generated_tag.url %}
+        {% else %}
+          {% assign encoded_tag = tag | url_encode %}
+          {% assign tag_url = '/blog/search/?tag=' | append: encoded_tag %}
+        {% endif %}
+        <li><a class="tag" href="{{ tag_url | relative_url }}">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </header>
+
+    <div class="post-layout{% if page.toc == false %} post-layout--without-toc{% endif %}">
+      {% unless page.toc == false %}
+      <aside class="post-toc" aria-label="Table of contents">
+        <details class="post-toc__details" open>
+          <summary>On this page</summary>
+          <nav id="post-toc-list"></nav>
+        </details>
+      </aside>
+      {% endunless %}
+      <div class="post-content blog-reading-column">
+        {{ content }}
+      </div>
+    </div>
+
+    <footer class="post-footer blog-reading-column">
+      <div class="post-actions">
+        <button class="copy-link" type="button" data-url="{{ page.url | absolute_url }}">
+          <span class="copy-link__label">Copy link</span>
+        </button>
+        <a href="{{ '/blog/' | relative_url }}">Back to {{ site.blog.title }}</a>
+      </div>
+
+      {% assign related_count = 0 %}
+      {% capture related_markup %}
+        {% if page.related and page.related.size > 0 %}
+          {% for related_slug in page.related limit: 3 %}
+            {% assign candidate = site.posts | where: "slug", related_slug | first %}
+            {% if candidate %}
+              {% assign related_count = related_count | plus: 1 %}
+              <li>
+                <a href="{{ candidate.url | relative_url }}">{{ candidate.title }}</a>
+                <time datetime="{{ candidate.date | date_to_xmlschema }}">{{ candidate.date | date: "%b %Y" }}</time>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% for candidate in site.posts %}
+            {% if candidate.url != page.url and related_count < 3 %}
+              {% assign is_related = false %}
+              {% for tag in candidate.tags %}
+                {% if page.tags contains tag %}{% assign is_related = true %}{% endif %}
+              {% endfor %}
+              {% if is_related %}
+                {% assign related_count = related_count | plus: 1 %}
+                <li>
+                  <a href="{{ candidate.url | relative_url }}">{{ candidate.title }}</a>
+                  <time datetime="{{ candidate.date | date_to_xmlschema }}">{{ candidate.date | date: "%b %Y" }}</time>
+                </li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endcapture %}
+      {% if related_count > 0 %}
+      <section class="related-posts" aria-labelledby="related-posts-title">
+        <h2 id="related-posts-title">Related posts</h2>
+        <ul>{{ related_markup }}</ul>
+      </section>
+      {% endif %}
+
+      <p class="post-subscribe">New posts are available through the <a href="{{ '/blog/feed.xml' | relative_url }}">RSS feed</a>.</p>
+    </footer>
+  </article>
+</main>

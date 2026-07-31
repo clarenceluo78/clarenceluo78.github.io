@@ -1,0 +1,33 @@
+---
+layout: blog_listing
+title: Tags
+heading: Tags
+permalink: /blog/tags/
+intro: "Browse the ideas and subjects that connect posts."
+---
+{% if site.tags.size > 0 %}
+<ul class="tag-cloud" aria-label="All tags">
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag_pair in sorted_tags %}
+    {% assign tag_name = tag_pair[0] %}
+    {% assign tag_posts = tag_pair[1] %}
+    {% assign generated_tag = site.blog_tags | where: "tag", tag_name | first %}
+    {% if generated_tag %}
+      {% assign tag_url = generated_tag.url %}
+    {% else %}
+      {% assign encoded_tag = tag_name | url_encode %}
+      {% assign tag_url = '/blog/search/?tag=' | append: encoded_tag %}
+    {% endif %}
+    <li>
+      <a href="{{ tag_url | relative_url }}">
+        <span>{{ tag_name }}</span>
+        <span class="tag-cloud__count">{{ tag_posts.size }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<section class="empty-state">
+  <p>Tags will appear as posts are published.</p>
+</section>
+{% endif %}

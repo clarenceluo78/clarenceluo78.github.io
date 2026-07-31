@@ -1,0 +1,30 @@
+{% assign post = include.post %}
+{% assign words = post.content | number_of_words %}
+{% assign reading_time = words | divided_by: site.blog.reading_words_per_minute %}
+{% assign remainder = words | modulo: site.blog.reading_words_per_minute %}
+{% if remainder > 0 %}{% assign reading_time = reading_time | plus: 1 %}{% endif %}
+{% if reading_time < 1 %}{% assign reading_time = 1 %}{% endif %}
+<article class="post-card">
+  <h2 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+  <div class="post-meta">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    <span aria-hidden="true">·</span>
+    <span>{{ reading_time }} min read</span>
+  </div>
+  {% if post.tags and post.tags.size > 0 %}
+  <ul class="tag-list" aria-label="Tags">
+    {% for tag in post.tags %}
+    {% assign generated_tag = site.blog_tags | where: "tag", tag | first %}
+    {% if generated_tag %}
+      {% assign tag_url = generated_tag.url %}
+    {% else %}
+      {% assign encoded_tag = tag | url_encode %}
+      {% assign tag_url = '/blog/search/?tag=' | append: encoded_tag %}
+    {% endif %}
+    <li><a class="tag" href="{{ tag_url | relative_url }}">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <p class="post-card__excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: site.blog.excerpt_words }}</p>
+  <a class="read-more" href="{{ post.url | relative_url }}" aria-label="Read {{ post.title }}">Read post <span aria-hidden="true">→</span></a>
+</article>

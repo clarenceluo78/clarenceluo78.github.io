@@ -1,0 +1,22 @@
+{% assign cite_author = page.author | default: site.data.main_info.name %}
+{% assign cite_year = page.date | date: "%Y" %}
+{% assign cite_month = page.date | date: "%b" %}
+{% assign cite_key = page.citation_key | default: page.slug | remove: "-" %}
+<section class="citation-block" aria-labelledby="citation">
+  <h2 id="citation">Citation</h2>
+  <p>{{ cite_author }}. “{{ page.title }}.” <em>{{ site.blog.title }}</em> ({{ cite_month }} {{ cite_year }}). <a href="{{ page.url | absolute_url }}">{{ page.url | absolute_url }}</a>.</p>
+  <div class="code-frame">
+    <div class="code-frame__bar">
+      <span>BibTeX</span>
+      <button class="code-copy" type="button" aria-label="Copy BibTeX">Copy</button>
+    </div>
+    <pre><code>@article{luo{{ cite_year }}{{ cite_key }},
+  title   = "{{ page.title }}",
+  author  = "Luo, Haoyan",
+  journal = "{{ site.blog.title }}",
+  year    = "{{ cite_year }}",
+  month   = "{{ cite_month }}",
+  url     = "{{ page.url | absolute_url }}"
+}</code></pre>
+  </div>
+</section>

@@ -181,6 +181,19 @@ title: Home
 
 
 </div>
+{% if site.posts.size > 0 %}
+<div class="docs-section" id="blog">
+  <h4>Recent Posts</h4>
+  {% for post in site.posts limit: 3 %}
+    <div class="paper">
+      <p class="title"><b><a href="{{ post.url | relative_url }}">{{ post.title }}</a></b></p>
+      <p><i>{{ post.date | date: "%B %-d, %Y" }}</i></p>
+      <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: site.blog.excerpt_words }}</p>
+    </div>
+  {% endfor %}
+  <p><a href="{{ '/blog/' | relative_url }}">View all posts →</a></p>
+</div>
+{% endif %}
 <div class="docs-section" id="misc">
   <h4>Misc.</h4>
   <p>

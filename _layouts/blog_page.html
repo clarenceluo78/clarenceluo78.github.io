@@ -1,0 +1,20 @@
+---
+layout: blog_listing
+---
+<section class="post-list" aria-label="Haoyan's Blog posts">
+  {% for post in site.posts limit: site.blog.posts_per_page offset: page.offset %}
+    {% include blog_post_card.html post=post %}
+  {% endfor %}
+</section>
+<nav class="pagination" aria-label="Post pagination">
+  {% if page.page_number > 2 %}
+    {% assign previous_number = page.page_number | minus: 1 %}
+    <a rel="prev" href="{{ '/blog/page/' | append: previous_number | append: '/' | relative_url }}"><span aria-hidden="true">←</span> Newer</a>
+  {% else %}
+    <a rel="prev" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">←</span> Newer</a>
+  {% endif %}
+  {% if page.page_number < page.total_pages %}
+    {% assign next_number = page.page_number | plus: 1 %}
+    <a rel="next" href="{{ '/blog/page/' | append: next_number | append: '/' | relative_url }}">Older <span aria-hidden="true">→</span></a>
+  {% endif %}
+</nav>

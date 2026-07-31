@@ -1,0 +1,12 @@
+---
+layout: blog_listing
+---
+{% assign tagged_posts = site.tags[page.tag] %}
+<div class="tag-page-heading">
+  <p><span class="tag tag--static">{{ page.tag }}</span> <span>{{ tagged_posts.size }} {% if tagged_posts.size == 1 %}post{% else %}posts{% endif %}</span></p>
+</div>
+<section class="post-list" aria-label="Posts tagged {{ page.tag }}">
+  {% for post in tagged_posts %}
+    {% include blog_post_card.html post=post %}
+  {% endfor %}
+</section>

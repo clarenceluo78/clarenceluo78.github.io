@@ -1,0 +1,21 @@
+<header class="blog-header">
+  <div class="blog-shell blog-header__inner">
+    <a class="blog-brand" href="{{ '/blog/' | relative_url }}" aria-label="Haoyan's Blog home">
+      <span class="blog-brand__title">{{ site.blog.title }}</span>
+      <span class="blog-brand__author">{{ site.data.main_info.name }}</span>
+    </a>
+    <nav class="blog-nav" aria-label="Haoyan's Blog navigation">
+      <a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' %} aria-current="page"{% endif %}>{{ site.blog.title }}</a>
+      <a href="{{ '/blog/tags/' | relative_url }}"{% if page.url contains '/blog/tags/' %} aria-current="page"{% endif %}>Tags</a>
+      <a href="{{ '/blog/search/' | relative_url }}"{% if page.url == '/blog/search/' %} aria-current="page"{% endif %}>Search</a>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a class="icon-link" href="{{ '/blog/feed.xml' | relative_url }}" aria-label="Subscribe via RSS" title="RSS feed">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4a15 15 0 0 1 15 15h-3A12 12 0 0 0 5 7V4Zm0 6a9 9 0 0 1 9 9h-3a6 6 0 0 0-6-6v-3Zm2 6.5A2.5 2.5 0 1 1 7 21a2.5 2.5 0 0 1 0-5Z"/></svg>
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+        <svg class="theme-toggle__sun" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11ZM12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+        <svg class="theme-toggle__moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8a8.5 8.5 0 1 0 11.5 11.5Z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
