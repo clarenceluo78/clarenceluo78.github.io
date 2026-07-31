@@ -3,7 +3,7 @@ layout: blog_base
 ---
 <main id="main-content" class="blog-main">
   <div class="blog-shell">
-    <header class="page-intro">
+    <header class="page-intro{% if page.compact_heading %} page-intro--compact{% endif %}">
       <h1>{{ page.heading | default: site.blog.title }}</h1>
       {% if page.intro %}<p>{{ page.intro }}</p>{% endif %}
     </header>
