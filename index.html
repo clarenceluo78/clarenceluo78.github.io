@@ -20,7 +20,7 @@ title: Home
   <p>
     I have worked as an AI Associate at 
     <a href="https://www.jpmorganchase.com/" target="_blank">J.P. Morgan</a>, 
-    designing and implementing LLM-based solutions for real-world financial applications.
+    designing and implementing solutions for real-world financial applications.
     I previously interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/" target="_blank">Microsoft Research Asia</a>, <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Lab</a> and <a href="https://healthcare.tencent.com/" target="_blank">Tencent</a>.
 </p>
 <!-- <p>
@@ -81,7 +81,7 @@ title: Home
         <div class="paper">
           <p class="title"><b>{{ paper.title }}</b>
             {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">PDF</a>
+              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
             {% endif %}
             {% if paper.pap %}
               <a class="button" href="{{ paper.pap }}" target="_blank">Preregistration</a>
@@ -103,7 +103,7 @@ title: Home
             {% endif %}
           </p>
           <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue }}</i></p>
+          <p><i>{{ paper.venue | replace: "Spotlight", "<span class='spotlight' style='color: #B03A2E; font-weight: 700;'>Spotlight</span>" }}</i></p>
           {% if paper.description %}
             <p>{{ paper.description }}</p>
           {% endif %}
@@ -128,7 +128,7 @@ title: Home
         <div class="paper">
           <p class="title"><b>{{ paper.title }}</b>
             {% if paper.paper_pdf %}
-              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">PDF</a>
+              <a class="button" href="{{ paper.paper_pdf | prepend: site.baseurl }}" target="_blank">Paper</a>
             {% endif %}
             {% if paper.pap %}
               <a class="button" href="{{ paper.pap }}" target="_blank">Preregistration</a>
@@ -197,7 +197,7 @@ title: Home
 <div class="docs-section" id="misc">
   <h4>Misc.</h4>
   <p>
-    I was the president of <span style="color: red">TEDxCUHKSZ</span> during my undergraduate years (check out our <a href="https://mp.weixin.qq.com/s/bGJ-UqhS5GuEfWJ0t2lppQ" target="_blank">annual events</a>), promoting our slogan: "ideas worth spreading" :p 
+    I was the president of <b style="color: #B03A2E">TED</b><span style="color: #000000">xCUHKSZ</span> during my undergraduate years (check out our <a href="https://mp.weixin.qq.com/s/bGJ-UqhS5GuEfWJ0t2lppQ" target="_blank">annual events</a>), promoting our slogan: "ideas worth spreading" :p 
   </p>
   <p>
     In my free time, I'm a passionate piano and cello enthusiast. I also enjoy playing football, basketball, and tennis.

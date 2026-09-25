@@ -1,5 +1,5 @@
 papers:
-  - title: "Persistent Sparse Autoencoders: Learning Feature Timescales in Language Models"
+  - title: "Persistent Sparse Autoencoders: Learning Feature-Specific Timescales in Language Model Representations"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     venue: "arXiv 2026"
     paper_pdf: "https://arxiv.org/abs/2607.17117"
@@ -9,7 +9,8 @@ papers:
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     paper_pdf: https://openreview.net/pdf?id=BYTQ4nQRha
     code: "https://github.com/clarenceluo78/skop-steering"
-    venue: "ICML 2026 Workshop on Mechanistic Interpretability"
+    # venue: "ICML 2026 Workshop on Mechanistic Interpretability"
+    venue: "NeurIPS 2026 (Spotlight)"
     selected: y
 
   - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
@@ -40,34 +41,34 @@ papers:
     paper_pdf: assets/papers/MRes_thesis_haoyanluo.pdf
     venue: "MRes Thesis"
     poster: "assets/posters/mod-poster.pdf"
-    selected: y
+    # selected: y
 
-  - title: "🔎 From Understanding to Utilization: A Survey on Explainability for Large Language Models"
+  - title: "From Understanding to Utilization: A Survey on Explainability for Large Language Models"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://arxiv.org/abs/2401.12874
     venue: "arXiv 2024"
     selected: y
 
-  - title: "🎙️ Singer-adaptive Singing Voice Conversion"
-    authors: <b>Haoyan Luo</b>
+  - title: "Singer-adaptive Singing Voice Conversion"
+    authors: "<b>Haoyan Luo</b>"
     paper_pdf: assets/papers/singer-adaptive-svc.pdf
     venue: "Open-source Project"
     code: https://github.com/clarenceluo78/singer-adaptive-svc
     demo: assets/pages/svc.html
 
-  - title: "<img src='images/openfe.svg' style='width: 40px; height: 20px; margin-right: -1px;'> OpenFE: Automated Feature Generation With Expert-level Performance"
-    authors: Tianping Zhang, Zheyu Zhang, <b>Haoyan Luo</b>, Fengyuan Liu, Wei Cao, Jian Li
+  - title: "OpenFE: Automated Feature Generation With Expert-level Performance"
+    authors: "Tianping Zhang, Zheyu Zhang, <b>Haoyan Luo</b>, Fengyuan Liu, Wei Cao, Jian Li"
     paper_pdf: https://icml.cc/virtual/2023/poster/24950
     venue: "ICML 2023"
     code: https://github.com/IIIS-Li-Group/OpenFE
     selected: y
 
   - title: "ActiveAD: Enhancing Anomaly Detection in Tabular Data through Active Learning Strategies"
-    authors: <b>Haoyan Luo</b>, Xiaofan Gui, Wei Cao, Jiang Bian
+    authors: "<b>Haoyan Luo</b>, Xiaofan Gui, Wei Cao, Jiang Bian"
     paper_pdf: assets/papers/ActiveAD.pdf
     venue: "arXiv 2023"
     code: https://github.com/clarenceluo78/ActiveAD
-    selected: y
+    # selected: y
 
   - title: "🗺️ Steering the Networked Temporal Point Processes via Controlling the Network Graph"
     authors: <b>Haoyan Luo</b>, Shuang Li
