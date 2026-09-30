@@ -1,5 +1,5 @@
 ---
-date: 2026-10-01
+date: 2026-10-01 00:00:00 +0800
 title: "From Dice to Agents: Reinforcement Learning in One Set of Symbols"
 slug: "rl-from-dice-to-agents"
 tags:
