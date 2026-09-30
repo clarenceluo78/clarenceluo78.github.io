@@ -2,7 +2,6 @@
   <div class="blog-shell blog-header__inner">
     <a class="blog-brand" href="{{ '/blog/' | relative_url }}" aria-label="Haoyan's Blog home">
       <span class="blog-brand__title">{{ site.blog.title }}</span>
-      <span class="blog-brand__author">{{ site.data.main_info.name }}</span>
     </a>
     <nav class="blog-nav" aria-label="Haoyan's Blog navigation">
       <a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' %} aria-current="page"{% endif %}>{{ site.blog.title }}</a>
