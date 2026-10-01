@@ -1,7 +1,7 @@
 papers:
   - title: "Persistent Sparse Autoencoders: Learning Feature-Specific Timescales in Language Model Representations"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
-    venue: "arXiv 2026"
+    venue: "NeurIPS 2026 InterpScience "
     paper_pdf: "https://arxiv.org/abs/2607.17117"
     selected: y
 
@@ -16,7 +16,7 @@ papers:
   - title: "Tuning Language Models by Mixture-of-Depths Ensemble"
     authors: "<b>Haoyan Luo</b>, Lucia Specia"
     paper_pdf: https://arxiv.org/abs/2410.13077
-    venue: "COLM 2026 Workshop on Actionable Interpretability"
+    venue: "COLM 2026 Actionable Interpretability"
     code: https://clarenceluo78.github.io/
     poster: "assets/posters/mod-poster.pdf"
     selected: y
