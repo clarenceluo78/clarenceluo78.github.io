@@ -9,23 +9,23 @@ title: Home
     I am a PhD student in Machine Learning at 
     <a href="https://www.cam.ac.uk/" target="_blank">the University of Cambridge</a>, 
     advised by Prof. <a href="https://www.cl.cam.ac.uk/~mj201/" target="_blank">Mateja Jamnik</a>.
-    I am affiliated with <a href="https://www.darwin.cam.ac.uk/" target="_blank">Darwin College</a> and the
-    <a href="https://www.cst.cam.ac.uk/" target="_blank">Department of Computer Science and Technology</a>.
-    Prior to this, I completed my MRes in Machine Learning at 
+    <!-- I am affiliated with <a href="https://www.darwin.cam.ac.uk/" target="_blank">Darwin College</a> and the -->
+    <!-- <a href="https://www.cst.cam.ac.uk/" target="_blank">Department of Computer Science and Technology</a>. -->
+    <!-- Prior to this, I completed my MRes in Machine Learning at 
     <a href="https://www.imperial.ac.uk/" target="_blank">Imperial College London</a>, 
     supervised by Prof. <a href="https://scholar.google.co.uk/citations?user=wVl_z8kAAAAJ&hl=en" target="_blank">Lucia Specia</a>.
     I obtained my B.Eng. degree in Computer Science from 
-    <a href="https://www.cuhk.edu.cn/" target="_blank">The Chinese University of Hong Kong, Shenzhen</a>.
-  </p>
-  <p>
-    I have worked as an AI Associate at 
+    <a href="https://www.cuhk.edu.cn/" target="_blank">The Chinese University of Hong Kong, Shenzhen</a>. -->
+  <!-- </p> -->
+  <!-- <p> -->
+    Prior to this, I have worked as an AI Associate at 
     <a href="https://www.jpmorganchase.com/" target="_blank">J.P. Morgan</a>, 
     designing and implementing solutions for real-world financial applications.
     I previously interned at <a href="https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/" target="_blank">Microsoft Research Asia</a>, <a href="https://www.shlab.org.cn/" target="_blank">Shanghai AI Lab</a> and <a href="https://healthcare.tencent.com/" target="_blank">Tencent</a>.
 </p>
-<!-- <p>
-  <b>I am actively looking for research internships / collaborations.</b> If you think my background and research interests align with your group, please feel free to reach out!
-</p> -->
+<!-- <p> -->
+  <!-- <b>I am actively looking for research internships / collaborations.</b> If you think my background and research interests align with your group, please feel free to reach out! -->
+<!-- </p> -->
 <p>
   <b>📢 2025 update:</b> open to advise student projects on interp research. For Cambridge students, please see <a href="https://www.cl.cam.ac.uk/~mj201/teaching/student-projects.html" target="_blank">this link</a>.
 </p>
@@ -103,7 +103,11 @@ title: Home
             {% endif %}
           </p>
           <p>{{ paper.authors }}</p>
-          <p><i>{{ paper.venue | replace: "Spotlight", "<span class='spotlight' style='color: #B03A2E; font-weight: 700;'>Spotlight</span>" }}</i></p>
+          {% assign venues = paper.venue %}
+          {% if venues.first == nil %}{% assign venues = paper.venue | split: "|||" %}{% endif %}
+          {% for venue in venues %}
+            <p><i>{{ venue | replace: "Spotlight", "<span class='spotlight' style='color: #B03A2E; font-weight: 700;'>Spotlight</span>" }}</i></p>
+          {% endfor %}
           {% if paper.description %}
             <p>{{ paper.description }}</p>
           {% endif %}
