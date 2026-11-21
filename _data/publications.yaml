@@ -113,11 +113,11 @@ projects:
     description: "A personal Python toolkit collecting deep learning algorithms, reusable utilities, and implementation notes for experimentation."
     code: https://github.com/clarenceluo78/deep-learning-lookup
 
-  - title: "Mindy: a web application for creating and managing online document"
-    authors: <b>Haoyan Luo</b>, Xiaowen Shao, Wentao Ge, Yanyu Chen
-    paper_pdf: https://github.com/clarenceluo78/Mindy/blob/main/Group10%20Final%20Report.pdf
-    description: "A collaborative web application for creating, organizing, and managing online documents."
-    code: https://github.com/clarenceluo78/Mindy
+  # - title: "Mindy: a web application for creating and managing online document"
+  #   authors: <b>Haoyan Luo</b>, Xiaowen Shao, Wentao Ge, Yanyu Chen
+  #   paper_pdf: https://github.com/clarenceluo78/Mindy/blob/main/Group10%20Final%20Report.pdf
+  #   description: "A collaborative web application for creating, organizing, and managing online documents."
+  #   code: https://github.com/clarenceluo78/Mindy
 
   # - title: "<img src='images/tcp.gif' style='width: 30px; height: 30px; margin-right: -1px;'> Tutor CoPilot: A Human-AI Approach for Scaling Real-Time Expertise"
   #   authors: "<b>Rose E. Wang</b>, Ana Ribeiro, Carly Robinson, Dora Demszky, Susanna Loeb."
