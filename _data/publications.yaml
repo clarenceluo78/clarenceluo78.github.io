@@ -3,12 +3,13 @@ papers:
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
     venue: "NeurIPS 2026 InterpScience "
     paper_pdf: "https://arxiv.org/abs/2607.17117"
+    code: "https://github.com/clarenceluo78/persistent-sparse-autoencoders"
     selected: y
 
   - title: "Don't Lose Focus: Activation Steering via Key-Orthogonal Projections"
     authors: "<b>Haoyan Luo</b>, Mateo Espinosa Zarlenga, Mateja Jamnik"
-    paper_pdf: https://openreview.net/pdf?id=BYTQ4nQRha
-    code: "https://github.com/clarenceluo78/skop-steering"
+    paper_pdf: https://arxiv.org/abs/2605.06342
+    code: "https://github.com/clarenceluo78/skop"
     venue:
       - "ICML 2026 Mechanistic Interpretability"
       - "NeurIPS 2026 (Spotlight)"

@@ -140,7 +140,7 @@ a {
 
 .blog-brand__title {
   font-family: var(--prose);
-  font-size: 1.65rem;
+  font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -0.025em;
 }
@@ -1206,7 +1206,7 @@ html[data-theme="dark"] .theme-toggle__moon {
   }
 
   .blog-brand__title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .blog-main {

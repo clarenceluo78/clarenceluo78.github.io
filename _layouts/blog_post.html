@@ -9,7 +9,7 @@ layout: blog_base
 <main id="main-content" class="post-main">
   <article class="post">
     <header class="post-header blog-reading-column">
-      <a class="post-header__back" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">←</span> {{ site.blog.title }}</a>
+      <a class="post-header__back" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">←</span> Posts</a>
       <h1>{{ page.title }}</h1>
       <div class="post-meta post-meta--large">
         <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
@@ -57,7 +57,7 @@ layout: blog_base
         <button class="copy-link" type="button" data-url="{{ page.url | absolute_url }}">
           <span class="copy-link__label">Copy link</span>
         </button>
-        <a href="{{ '/blog/' | relative_url }}">Back to {{ site.blog.title }}</a>
+        <a href="{{ '/blog/' | relative_url }}">Back to posts</a>
       </div>
 
       {% assign related_count = 0 %}

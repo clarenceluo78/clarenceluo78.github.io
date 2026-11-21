@@ -1,0 +1,6 @@
+.DS_Store
+_site_preview/
+.jekyll-cache/
+.sass-cache/
+_site/
+.obsidian/

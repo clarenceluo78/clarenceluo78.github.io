@@ -1,10 +1,10 @@
 <header class="blog-header">
   <div class="blog-shell blog-header__inner">
-    <a class="blog-brand" href="{{ '/blog/' | relative_url }}" aria-label="Haoyan's Blog home">
+    <a class="blog-brand" href="{{ '/blog/' | relative_url }}" aria-label="Haoyan’logue home">
       <span class="blog-brand__title">{{ site.blog.title }}</span>
     </a>
-    <nav class="blog-nav" aria-label="Haoyan's Blog navigation">
-      <a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' %} aria-current="page"{% endif %}>{{ site.blog.title }}</a>
+    <nav class="blog-nav" aria-label="Haoyan’logue navigation">
+      <a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' %} aria-current="page"{% endif %}>Posts</a>
       <a href="{{ '/blog/tags/' | relative_url }}"{% if page.url contains '/blog/tags/' %} aria-current="page"{% endif %}>Tags</a>
       <a href="{{ '/blog/search/' | relative_url }}"{% if page.url == '/blog/search/' %} aria-current="page"{% endif %}>Search</a>
       <a href="{{ '/' | relative_url }}">Home</a>

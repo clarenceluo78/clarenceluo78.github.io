@@ -10,7 +10,7 @@ permalink: /blog/:title/
 excerpt_separator: "<!--more-->"
 
 blog:
-  title: "Haoyan's Blog"
+  title: "Haoyan’logue"
   intro: "A personal blog about ideas, patterns, and questions I find worth exploring."
   posts_per_page: 10
   excerpt_words: 30

@@ -1,4 +1,4 @@
-# Haoyan's Blog authoring
+# Haoyan’logue authoring
 
 Posts are plain Markdown. The `./blogctl` helper handles repetitive file setup and
 validation, but it never commits, pushes, or changes Git branches.

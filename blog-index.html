@@ -1,13 +1,13 @@
 ---
 layout: blog_listing
-title: "Haoyan's Blog"
+title: "Haoyan’logue"
 heading: "👋 Welcome"
 compact_heading: true
 permalink: /blog/
 intro: "I'm documenting ideas and questions I find interesting."
 ---
 {% if site.posts.size > 0 %}
-<section class="post-list" aria-label="Haoyan's Blog posts">
+<section class="post-list" aria-label="Haoyan’logue posts">
   {% for post in site.posts limit: site.blog.posts_per_page %}
     {% include blog_post_card.html post=post %}
   {% endfor %}

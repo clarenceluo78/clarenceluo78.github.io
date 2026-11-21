@@ -1,7 +1,7 @@
 ---
 layout: blog_listing
 ---
-<section class="post-list" aria-label="Haoyan's Blog posts">
+<section class="post-list" aria-label="Haoyan’logue posts">
   {% for post in site.posts limit: site.blog.posts_per_page offset: page.offset %}
     {% include blog_post_card.html post=post %}
   {% endfor %}
